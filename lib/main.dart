@@ -128,7 +128,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         )),
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.favorite,size: 40,color: AppColors.lightblueUplace,))
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.favorite,
+                      size: 40,
+                      color: AppColors.lightblueUplace,
+                    ))
               ],
             ),
           ],
