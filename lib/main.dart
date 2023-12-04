@@ -62,38 +62,62 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: AppColors.blueUplace,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
+        leading: Icon(
+          Icons.filter_list_alt,
+          color: AppColors.greenUplace,
+        ),
         title: Center(
             child: Text(
           widget.title,
           style: TextStyle(color: AppColors.greenUplace),
         )),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.search,
+                size: 30,
+                color: AppColors.greenUplace,
+              ))
+        ],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 300,
-              child: const Card(
+              width: 350,
+              child: Card(
                 color: AppColors.blueUplace,
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                    'Exemplo de Produto',
-                    style:
-                        TextStyle(fontSize: 18.0, color: AppColors.greenUplace),
-                  ),
-                  Text(
-                    'Exemplo de Produto',
-                    style:
-                        TextStyle(fontSize: 12.0, color: AppColors.greenUplace),
-                  ),
-                    ],
-                  )
-                ),
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 50,
+                          height: 50,
+                          color: AppColors.lightblueUplace,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Exemplo de Produto',
+                              style: TextStyle(
+                                  fontSize: 18.0, color: AppColors.greenUplace),
+                            ),
+                            Text(
+                              'Exemplo de Produto',
+                              style: TextStyle(
+                                  fontSize: 12.0, color: AppColors.greenUplace),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )),
               ),
             ),
           ],
