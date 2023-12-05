@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/components/product_card.dart';
+import 'package:uplace/components/uplace_theme.dart';
 import 'package:uplace/frontend/colors.dart';
 
 void main() {
@@ -13,11 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'uPlace',
-      theme: ThemeData(
-        fontFamily: 'clarissans',
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.blueUplace),
-        useMaterial3: true,
-      ),
+      theme: uPlaceTheme,
       home: const MyHomePage(title: 'uPlace'),
     );
   }
@@ -64,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         leading: IconButton(
           onPressed: () {},
-          icon: Icon(
+          icon: const Icon(
             Icons.filter_list_alt,
             color: AppColors.greenUplace,
           ),
@@ -72,71 +70,23 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Center(
             child: Text(
           widget.title,
-          style: TextStyle(color: AppColors.greenUplace),
+          style: const TextStyle(color: AppColors.greenUplace),
         )),
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.search,
                 size: 30,
                 color: AppColors.greenUplace,
               ))
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 330,
-                  child: Card(
-                    color: AppColors.blueUplace,
-                    child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 50,
-                              height: 50,
-                              color: AppColors.lightblueUplace,
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Exemplo de Produto',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: AppColors.greenUplace),
-                                ),
-                                Text(
-                                  'Exemplo de Produto',
-                                  style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: AppColors.greenUplace),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                  ),
-                ),
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.favorite,
-                      size: 40,
-                      color: AppColors.lightblueUplace,
-                    ))
-              ],
-            ),
+            ProductCard(),
           ],
         ),
       ),
