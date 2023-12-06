@@ -29,12 +29,12 @@ class ProductCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Exemplo de Produto',
+                          'Nome da loja',
                           style: TextStyle(
                               fontSize: 18.0, color: AppColors.greenUplace),
                         ),
                         Text(
-                          'Exemplo de Produto',
+                          'Descrição da loja',
                           style: TextStyle(
                               fontSize: 12.0, color: AppColors.greenUplace),
                         ),
