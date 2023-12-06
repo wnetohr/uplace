@@ -3,16 +3,16 @@ import 'package:uplace/components/product_card.dart';
 import 'package:uplace/frontend/colors.dart';
 import 'package:uplace/frontend/routes/routes.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class ServicePage extends StatefulWidget {
+  const ServicePage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<ServicePage> createState() => _ServicePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ServicePageState extends State<ServicePage> {
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -63,20 +63,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       RoutesFunctions.gotoHomePage(context);
                     },
-                    child: const DecoratedBox(
-                      decoration: UnderlineTabIndicator(
-                        borderSide: BorderSide(
-                          color: AppColors.blueUplace, // Cor do sublinhado
-                          width: 2.0, // Largura do sublinhado
-                        ),
-                      ),
-                      child: Text(
-                        'Alimentos',
-                        style: TextStyle(
-                          fontSize: 15.0, // Tamanho do texto
-                          fontWeight: FontWeight.bold, // Peso da fonte
-                          color: AppColors.blueUplace, // Cor do texto
-                        ),
+                    child: const Text(
+                      'Alimentos',
+                      style: TextStyle(
+                        fontSize: 15.0, // Tamanho do texto
+                        fontWeight: FontWeight.bold, // Peso da fonte
+                        color: Colors.black, // Cor do texto
                       ),
                     ),
                   ),
@@ -86,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       RoutesFunctions.gotoProductPage(context);
                     },
-                    child: Text(
+                    child: const Text(
                       'Produtos',
                       style: TextStyle(
                         fontSize: 15.0, // Tamanho do text // Peso da fonte
@@ -100,11 +92,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     RoutesFunctions.gotoServicePage(context);
                   },
-                  child: Text(
-                    'Serviços',
-                    style: TextStyle(
-                      fontSize: 15.0, // Tamanho do text // Peso da fonte
-                      color: Colors.black, // Cor do texto
+                  child: const DecoratedBox(
+                    decoration: UnderlineTabIndicator(
+                      borderSide: BorderSide(
+                        color: AppColors.blueUplace, // Cor do sublinhado
+                        width: 2.0, // Largura do sublinhado
+                      ),
+                    ),
+                    child: Text(
+                      'Serviços',
+                      style: TextStyle(
+                        fontSize: 15.0, // Tamanho do texto
+                        fontWeight: FontWeight.bold, // Peso da fonte
+                        color: AppColors.blueUplace, // Cor do texto
+                      ),
                     ),
                   ),
                 ))
