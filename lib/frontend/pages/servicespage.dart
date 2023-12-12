@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/components/navigation_bar.dart';
 import 'package:uplace/components/product_card.dart';
 import 'package:uplace/frontend/colors.dart';
 import 'package:uplace/frontend/routes/routes.dart';
@@ -29,13 +30,7 @@ class _ServicePageState extends State<ServicePage> {
         backgroundColor: AppColors.blueUplace,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.filter_list_alt,
-            color: AppColors.greenUplace,
-          ),
-        ),
+        leading: Container(),
         title: Center(
             child: Text(
           widget.title,
@@ -134,6 +129,7 @@ class _ServicePageState extends State<ServicePage> {
           ),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: const NavigationUplaceBar(),
     );
   }
 }

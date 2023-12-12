@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/components/category_menu.dart';
+import 'package:uplace/components/navigation_bar.dart';
 import 'package:uplace/components/product_card.dart';
 import 'package:uplace/frontend/colors.dart';
 import 'package:uplace/frontend/routes/routes.dart';
@@ -29,13 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: AppColors.blueUplace,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.filter_list_alt,
-            color: AppColors.greenUplace,
-          ),
-        ),
+        leading: Container(),
         title: Center(
             child: Text(
           widget.title,
@@ -53,64 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          Expanded(
-            flex: 1,
-            child: Flex(
-              direction: Axis.horizontal,
-              children: [
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      RoutesFunctions.gotoHomePage(context);
-                    },
-                    child: const DecoratedBox(
-                      decoration: UnderlineTabIndicator(
-                        borderSide: BorderSide(
-                          color: AppColors.blueUplace, // Cor do sublinhado
-                          width: 2.0, // Largura do sublinhado
-                        ),
-                      ),
-                      child: Text(
-                        'Alimentos',
-                        style: TextStyle(
-                          fontSize: 15.0, // Tamanho do texto
-                          fontWeight: FontWeight.bold, // Peso da fonte
-                          color: AppColors.blueUplace, // Cor do texto
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      RoutesFunctions.gotoProductPage(context);
-                    },
-                    child: Text(
-                      'Produtos',
-                      style: TextStyle(
-                        fontSize: 15.0, // Tamanho do text // Peso da fonte
-                        color: Colors.black, // Cor do texto
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                    child: TextButton(
-                  onPressed: () {
-                    RoutesFunctions.gotoServicePage(context);
-                  },
-                  child: Text(
-                    'Serviços',
-                    style: TextStyle(
-                      fontSize: 15.0, // Tamanho do text // Peso da fonte
-                      color: Colors.black, // Cor do texto
-                    ),
-                  ),
-                ))
-              ],
-            ),
-          ),
+          CategoryMenu(),
           const Expanded(
             flex: 6,
             child: SingleChildScrollView(
@@ -131,8 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+          //Expanded(child: NavigationUplaceBar())
         ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+    bottomNavigationBar: const NavigationUplaceBar(), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
