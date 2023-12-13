@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "907624467282",
+    "project_id": "uplace-1-0",
+    "storage_bucket": "uplace-1-0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907624467282:android:f6ada18378efafacdbc88b",
+        "android_client_info": {
+          "package_name": "com.example.uplace"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBifOUL7P6JhW_qeRCS_WSMj9AEWH3864s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
