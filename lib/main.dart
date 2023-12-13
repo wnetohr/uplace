@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'uPlace',
       theme: uPlaceTheme,
-      home: const MyHomePage(title: 'uPlace'),
+      home: const LoginPage(),
     );
   }
 }
