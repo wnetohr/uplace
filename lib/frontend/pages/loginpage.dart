@@ -29,19 +29,20 @@ class _LoginPageState extends State<LoginPage> {
                   backgroundImage: AssetImage(
                       'assets/user_icon_loginpage.png'), // Image path just for testing purposes
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 // Email Field
                 const TextField(
-                  decoration: InputDecoration(labelText: 'Seu endereço de e-mail'),
+                  decoration:
+                      InputDecoration(labelText: 'Seu endereço de e-mail'),
                 ),
-            
+
                 // Password Field
                 const TextField(
                   decoration: InputDecoration(labelText: '**********'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 // Forgot Password
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: const Text('Esqueci minha senha'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 // Sign In Button
@@ -61,10 +62,10 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: const Text('Entrar'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-            
+
                 // Login Social
                 Flex(
                   direction: Axis.horizontal,
@@ -77,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.blue,
                       ),
                       onPressed: () {
-                        // Add logic for Twitter login
+                        // Add logic for Facebook login
                       },
                     )),
                     Expanded(
@@ -88,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.red,
                       ),
                       onPressed: () {
-                        // Add logic for Twitter login
+                        // Add logic for Google login
                       },
                     )),
                     Expanded(
@@ -104,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                     ))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 // Sign Up Button
