@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/backend/repository/firestore/collections/sellerFSRepository.dart';
-import 'package:uplace/backend/repository/firestore/collections/userFSRepository.dart';
 import 'package:uplace/frontend/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:uplace/frontend/routes/routes.dart';
@@ -13,9 +11,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  UserFSRepository userRepository = UserFSRepository();
-  SellerFSRepository sellerRepository = SellerFSRepository();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,8 +58,6 @@ class _LoginPageState extends State<LoginPage> {
                 // Sign In Button
                 ElevatedButton(
                   onPressed: () async {
-                    var users = await userRepository.getAllUsers();
-                    var sellers = await sellerRepository.getAllUsers();
                     RoutesFunctions.gotoHomePage(context);
                   },
                   child: const Text('Entrar'),
