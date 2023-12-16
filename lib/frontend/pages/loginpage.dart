@@ -25,62 +25,108 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 // User Avatar
                 const CircleAvatar(
-                  radius: 70.0,
-                  backgroundImage: AssetImage(
-                      'assets/user_icon_loginpage.png'), // Image path just for testing purposes
+                  radius: 80.0,
+                  backgroundColor: AppColors.blueUplace,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 60,
                 ),
                 // Email Field
                 const TextField(
-                  decoration:
-                      InputDecoration(labelText: 'Seu endereço de e-mail'),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: AppColors.greenUplace,
+                      border: OutlineInputBorder(),
+                      labelText: 'Seu endereço de e-mail'),
                 ),
-
+                const SizedBox(
+                  height: 10,
+                ),
                 // Password Field
                 const TextField(
-                  decoration: InputDecoration(labelText: '**********'),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: AppColors.greenUplace,
+                      border: OutlineInputBorder(),
+                      labelText: '**********'),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
+
                 // Forgot Password
-                TextButton(
-                  onPressed: () {
-                    // Add logic for forgot password
-                  },
-                  child: const Text('Esqueci minha senha'),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    onPressed: () {
+                      // Add logic for forgot password
+                    },
+                    style: TextButton.styleFrom(foregroundColor: Colors.black),
+                    child: const Text('Esqueci minha senha'),
+                  ),
                 ),
+
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
+
                 // Sign In Button
-                ElevatedButton(
-                  onPressed: () {
-                    RoutesFunctions.gotoHomePage(context);
-                  },
-                  child: const Text('Entrar'),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                        height:
+                            20), // Container superior (ajuste a altura para empurrar o botão para baixo)
+                    Container(), // Container inferior (pode ser ajustado para empurrar o botão para cima)
+                    Container(
+                      width:
+                          180, // Ajuste a largura do botão conforme necessário
+                      height:
+                          60, // Ajuste a altura do botão conforme necessário
+                      child: ElevatedButton(
+                        onPressed: () {
+                          RoutesFunctions.gotoHomePage(context);
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.blueUplace), // Cor de fundo do botão
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40.0),
+                            ),
+                          ),
+                        ),
+                        child: const Text(
+                          'Entrar',
+                          style: TextStyle(
+                            color: AppColors
+                                .lightblueUplace, // Cor do texto 'Entrar'
+                            fontSize: 28, // Ajusta o tamanho do texto
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+
                 const SizedBox(
-                  height: 20,
+                  height: 100,
                 ),
 
                 // Login Social
+                const Text(
+                  'Logar com uma conta social',
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
                 Flex(
                   direction: Axis.horizontal,
                   children: [
-                    Expanded(
-                        child: IconButton(
-                      icon: const Icon(
-                        Icons.facebook,
-                        size: 40,
-                        color: Colors.blue,
-                      ),
-                      onPressed: () {
-                        // Add logic for Facebook login
-                      },
-                    )),
                     Expanded(
                         child: IconButton(
                       icon: const FaIcon(
@@ -90,6 +136,17 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       onPressed: () {
                         // Add logic for Google login
+                      },
+                    )),
+                    Expanded(
+                        child: IconButton(
+                      icon: const Icon(
+                        Icons.facebook,
+                        size: 50,
+                        color: Colors.blue,
+                      ),
+                      onPressed: () {
+                        // Add logic for Facebook login
                       },
                     )),
                     Expanded(
@@ -113,6 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     // Add logic for sign up
                   },
+                  style: TextButton.styleFrom(foregroundColor: Colors.black),
                   child: const Text('Registre via e-mail'),
                 ),
               ],
