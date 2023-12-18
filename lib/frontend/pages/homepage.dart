@@ -50,12 +50,29 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           CategoryMenu(),
-          const Expanded(
+          Expanded(
             flex: 6,
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  ElevatedButton(
+                    child: ProductCard(),
+                    onPressed: () {
+                      // Adicione a lógica desejada quando o botão for pressionado
+                      RoutesFunctions.gotoSellerPage(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      //backgroundColor: Colors.transparent, // Cor de fundo transparente
+                      elevation: 0.0,
+                      padding: EdgeInsets
+                          .zero, // Remove o preenchimento padrão do botão
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            8.0), // Bordas arredondadas do botão
+                      ),
+                    ),
+                  ),
                   ProductCard(),
                   ProductCard(),
                   ProductCard(),
@@ -73,7 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
           //Expanded(child: NavigationUplaceBar())
         ],
       ),
-    bottomNavigationBar: const NavigationUplaceBar(), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar:
+          const NavigationUplaceBar(), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

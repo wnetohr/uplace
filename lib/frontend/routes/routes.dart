@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uplace/frontend/pages/homepage.dart';
 import 'package:uplace/frontend/pages/productspage.dart';
+import 'package:uplace/frontend/pages/sellerspage.dart';
 import 'package:uplace/frontend/pages/servicespage.dart';
 
 class RoutesFunctions {
@@ -22,6 +23,13 @@ class RoutesFunctions {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ServicePage(title: 'uPlace')),
+    );
+  }
+
+  static void gotoSellerPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SellersPage()),
     );
   }
 }
