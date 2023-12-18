@@ -5,6 +5,7 @@ import 'package:uplace/frontend/colors.dart';
 import 'package:uplace/frontend/pages/homepage.dart';
 import 'package:firebase_core/firebase_core.dart'; //firebase
 import 'package:uplace/frontend/pages/loginpage.dart';
+import 'package:uplace/frontend/pages/sellerspage.dart';
 import 'firebase_options.dart'; //firebase
 
 void main() async {

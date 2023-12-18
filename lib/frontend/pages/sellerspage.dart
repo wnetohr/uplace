@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uplace/components/product_card.dart';
+import 'package:uplace/components/sellersbanner.dart';
 import 'package:uplace/frontend/colors.dart';
 import 'package:uplace/frontend/routes/routes.dart';
 
@@ -16,47 +17,34 @@ class _SellersPageState extends State<SellersPage> {
     return Column(
       children: [
         Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.white,
-              child: Column(
-                children: [
-                  Expanded(
-                      flex: 3,
-                      child: Image.network(
-                          'https://images.pexels.com/photos/13330673/pexels-photo-13330673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')),
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: AppColors.blueUplace,
-                            borderRadius: BorderRadius.circular(10)),
-                        margin: EdgeInsets.all(5),
-                      ))
-                ],
-              ),
-            )),
+            child: SellersBanner(
+          sellerName: 'Loja de doces',
+          imageLink:
+              'https://images.pexels.com/photos/13330673/pexels-photo-13330673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          imageSeller:
+              'https://i.pinimg.com/736x/81/4d/ff/814dff3c0c62be676e79875d14cca883.jpg',
+          sellerRatting: 4.5,
+        )),
         Expanded(
-            flex: 1,
             child: Container(
-              color: Colors.white,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                  ],
-                ),
-              ),
-            ))
+          color: Colors.white,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ProductCard(),
+                ProductCard(),
+                ProductCard(),
+                ProductCard(),
+                ProductCard(),
+                ProductCard(),
+                ProductCard(),
+                ProductCard(),
+                ProductCard(),
+                ProductCard(),
+              ],
+            ),
+          ),
+        ))
       ],
     );
   }
