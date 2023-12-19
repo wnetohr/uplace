@@ -19,11 +19,11 @@ class _SellersPageState extends State<SellersPage> {
       children: [
         Expanded(
             child: SellersBanner(
-          sellerName: 'Loja de doces',
+          sellerName: 'Doces do Edu',
           imageLink:
               'https://images.pexels.com/photos/13330673/pexels-photo-13330673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
           imageSeller:
-              'https://i0.wp.com/culturalhistoryoftheinternet.com/wp-content/uploads/2020/11/cover2-1.jpg?fit=1919%2C1079&ssl=1',
+              'https://images.pexels.com/photos/247899/pexels-photo-247899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
           sellerRatting: 4.5,
         )),
         Expanded(
@@ -33,21 +33,10 @@ class _SellersPageState extends State<SellersPage> {
             child: Column(
               children: [
                 SellersProducts(productName: 'Brigadeiro',productPrice: 4.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                SellersProducts(productName: 'Brigadeiro',productPrice: 4.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                SellersProducts(productName: 'Brigadeiro',productPrice: 4.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                SellersProducts(productName: 'Brigadeiro',productPrice: 4.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                SellersProducts(productName: 'Brigadeiro',productPrice: 4.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                SellersProducts(productName: 'Brigadeiro',productPrice: 4.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                SellersProducts(productName: 'Brigadeiro',productPrice: 4.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
+                SellersProducts(productName: 'Cupcake de Chocolate',productPrice: 7.00,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/913136/pexels-photo-913136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                SellersProducts(productName: 'Cupcake de Morango',productPrice: 7.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                SellersProducts(productName: 'Dunots',productPrice: 5.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/867452/pexels-photo-867452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                SellersProducts(productName: 'Bolo floresta negra',productPrice: 8.50,productDesc: 'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado', imageLink: 'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
               ],
             ),
           ),

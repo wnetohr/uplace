@@ -17,13 +17,14 @@ class SellersProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    String price = productPrice.toStringAsFixed(2);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: AppColors.blueUplace,
       ),
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       width: screenWidth * 75,
       height: screenHeight * 0.20,
       child: Row(
@@ -65,11 +66,11 @@ class SellersProducts extends StatelessWidget {
                         color: AppColors.greenUplace),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 4,
                   ),
                   Text(
                     textAlign: TextAlign.start,
-                    'R $productPrice',
+                    'R\$ $price',
                     style: TextStyle(
                         fontSize: 18,
                         decoration: TextDecoration.none,
@@ -85,7 +86,7 @@ class SellersProducts extends StatelessWidget {
                       '$productDesc',
                       softWrap: true,
                       style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 12,
                           decoration: TextDecoration.none,
                           color: Colors.white),
                     ),

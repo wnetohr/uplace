@@ -44,7 +44,7 @@ class SellersBanner extends StatelessWidget {
                             '$sellerName',
                             textAlign: TextAlign.start,
                             style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 24,
                                 decoration: TextDecoration.none,
                                 color: AppColors.greenUplace),
                           ),
@@ -57,7 +57,7 @@ class SellersBanner extends StatelessWidget {
                             child: Text('Avaliação: $sellerRatting',
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     decoration: TextDecoration.none,
                                     color: AppColors.greenUplace))),
                       ],
