@@ -24,12 +24,15 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // User Avatar
+                const SizedBox(
+                  height: 30,
+                ),
                 const CircleAvatar(
                   radius: 80.0,
                   backgroundColor: AppColors.blueUplace,
                 ),
                 const SizedBox(
-                  height: 60,
+                  height: 40,
                 ),
                 // Email Field
                 const TextField(
@@ -163,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
                 // Sign Up Button
                 TextButton(

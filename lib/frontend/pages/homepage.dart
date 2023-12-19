@@ -4,6 +4,7 @@ import 'package:uplace/frontend/components/navigation_bar.dart';
 import 'package:uplace/frontend/components/product_card.dart';
 import 'package:uplace/frontend/colors.dart';
 import 'package:uplace/frontend/routes/routes.dart';
+import 'package:uplace/frontend/components/ImageCarousel.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -49,7 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          CategoryMenu(),
+          const CategoryMenu(),
+          const Expanded(
+              flex: 2,
+              child: ImageCarousel(images: [
+                //Carrossel dos Alimentos
+                'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400',
+                'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=400',
+                'https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=400'
+              ])),
           Expanded(
             flex: 6,
             child: SingleChildScrollView(
