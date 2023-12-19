@@ -69,7 +69,7 @@ class SellersProducts extends StatelessWidget {
                   ),
                   Text(
                     textAlign: TextAlign.start,
-                    '$productPrice',
+                    'R $productPrice',
                     style: TextStyle(
                         fontSize: 18,
                         decoration: TextDecoration.none,
