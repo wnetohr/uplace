@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/components/product_card.dart';
-import 'package:uplace/components/uplace_theme.dart';
+import 'package:uplace/frontend/components/product_card.dart';
+import 'package:uplace/frontend/components/uplace_theme.dart';
 import 'package:uplace/frontend/colors.dart';
 import 'package:uplace/frontend/pages/homepage.dart';
 import 'package:firebase_core/firebase_core.dart'; //firebase

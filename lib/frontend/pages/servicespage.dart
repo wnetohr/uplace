@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/components/navigation_bar.dart';
-import 'package:uplace/components/product_card.dart';
+import 'package:uplace/frontend/components/navigation_bar.dart';
+import 'package:uplace/frontend/components/product_card.dart';
 import 'package:uplace/frontend/colors.dart';
 import 'package:uplace/frontend/routes/routes.dart';
 

@@ -29,9 +29,8 @@ class SellersBanner extends StatelessWidget {
               child: Container(
                 width: screenWidth * 75,
                 decoration: BoxDecoration(
-                  color: AppColors.blueUplace,
-                  borderRadius: BorderRadius.circular(10)
-                ),
+                    color: AppColors.blueUplace,
+                    borderRadius: BorderRadius.circular(10)),
                 margin: EdgeInsets.all(5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +74,10 @@ class SellersBanner extends StatelessWidget {
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: Image.network('$imageSeller'),
+                        child: Image.network(
+                          '$imageSeller',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     )
                   ],
