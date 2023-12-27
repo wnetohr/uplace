@@ -1,10 +1,10 @@
 import 'package:uplace/backend/application/dtos/testDto.dart';
-import 'package:uplace/backend/application/services/interfaces/baseServiceInterface.dart';
+import 'package:uplace/backend/application/services/interfaces/baseService.dart';
 import 'package:uplace/backend/repository/implementations/firestore/tests2FSRepository.dart';
 import 'package:uplace/backend/repository/implementations/firestore/testsFSRepository.dart';
 import 'package:uplace/backend/repository/interfaces/testsRepositoryInterface.dart';
 
-class TestService extends BaseServiceInterface {
+class TestService extends BaseService {
   late TestsRepositoryInterface testsRepository;
   int system = 1;
 
