@@ -1,15 +1,17 @@
 import 'package:uplace/backend/application/dtos/newUserDto.dart';
 import 'package:uplace/backend/application/services/implementations/authService.dart';
+import 'package:uplace/backend/controller/interfaces/baseController.dart';
+import 'package:uplace/backend/handling/response.dart';
 
-class AuthController {
+class AuthController extends BaseController {
   final AuthService _authService = AuthService();
 
   AuthController();
 
-  void emailSignUp() {
+  Future<Response> emailSignUp() async {
     var newUser = NewUserDTO.FromDefaultEmail("gabrielr.nogueira2000@gmail.com",
         "123456", "123456", "gabriel", DateTime(2000, 1, 2));
 
-    _authService.emailSignUp(newUser);
+    return awnser(await _authService.emailSignUp(newUser));
   }
 }
