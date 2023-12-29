@@ -8,10 +8,7 @@ class AuthController extends BaseController {
 
   AuthController();
 
-  Future<Response> emailSignUp() async {
-    var newUser = NewUserDTO.FromDefaultEmail("gabrielr.nogueira2000@gmail.com",
-        "123456", "123456", "gabriel", DateTime(2000, 1, 2));
-
+  Future<Response> emailSignUp(NewUserDTO newUser) async {
     return awnser(await _authService.emailSignUp(newUser));
   }
 }
