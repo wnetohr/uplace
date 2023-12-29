@@ -1,12 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:uplace/backend/handling/errorHandler.dart';
+import 'package:uplace/backend/repository/interfaces/baseRepository.dart';
 
-abstract class AuthRepositoryInterface {
-  final ErrorHandler _errorHandler = ErrorHandler();
-
-  void setError(String error) {
-    _errorHandler.setError(error);
-  }
-
+abstract class AuthRepositoryInterface extends BaseRepository {
   Future<UserCredential?> firebaseEmailSignUp(String email, String password);
 }

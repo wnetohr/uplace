@@ -1,9 +1,9 @@
 class ErrorHandler {
   final List<String> _errors = List<String>.empty(growable: true);
 
-  static final ErrorHandler _firestoreUserRepository = ErrorHandler._internal();
+  static final ErrorHandler _errorHandler = ErrorHandler._internal();
   ErrorHandler._internal();
-  factory ErrorHandler() => _firestoreUserRepository;
+  factory ErrorHandler() => _errorHandler;
 
   String? validateError() {
     if (_errors.isEmpty) {
