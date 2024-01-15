@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 // Email Field
                 const TextField(
-                  obscureText: true,
+                  obscureText: false,
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: AppColors.greenUplace,
@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 const SizedBox(
-                  height: 100,
+                  height: 50,
                 ),
 
                 // Login Social
@@ -171,6 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Sign Up Button
                 TextButton(
                   onPressed: () {
+                    RoutesFunctions.gotoRegisterPage(context);
                     // Add logic for sign up
                   },
                   style: TextButton.styleFrom(foregroundColor: Colors.black),
