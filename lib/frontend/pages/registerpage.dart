@@ -10,6 +10,12 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  //Controllers for textformfields
+  TextEditingController _userNameController = TextEditingController();
+  TextEditingController _userEmailController = TextEditingController();
+  TextEditingController _userPasswordController = TextEditingController();
+  TextEditingController _userConfirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +36,10 @@ class _RegisterPageState extends State<RegisterPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text("Nome",style: TextStyle(fontSize: 18),),
-              const TextField(
+              TextField(
+                controller: _userNameController,
                 obscureText: false,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: AppColors.greenUplace,
                     border: OutlineInputBorder(),
@@ -42,9 +49,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 10,
               ),
               const Text("E-mail",style: TextStyle(fontSize: 18),),
-              const TextField(
+              TextField(
+                controller: _userEmailController,
                 obscureText: false,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: AppColors.greenUplace,
                     border: OutlineInputBorder(),
@@ -54,9 +62,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 10,
               ),
               const Text("Senha",style: TextStyle(fontSize: 18),),
-              const TextField(
+              TextField(
+                controller: _userPasswordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: AppColors.greenUplace,
                     border: OutlineInputBorder(),
@@ -66,9 +75,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 10,
               ),
               const Text("Confirme sua senha",style: TextStyle(fontSize: 18),),
-              const TextField(
+              TextField(
+                controller: _userConfirmPasswordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: AppColors.greenUplace,
                     border: OutlineInputBorder(),
@@ -84,6 +94,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 60, // Ajuste a altura do botão conforme necessário
                   child: ElevatedButton(
                     onPressed: () {
+                      //Local para enviar o valor dos controllers para o banco de dados
+                      String nome = _userNameController.text;
+                      String email = _userEmailController.text;
+                      String senha = _userPasswordController.text;
+                      String confirmarSenha = _userConfirmPasswordController.text;
+                      print('Nome: $nome');
+                      print('Email: $email');
+                      print('Senha: $senha');
+                      print('Confirmar senha: $confirmarSenha');
                       RoutesFunctions.gotoHomePage(context);
                     },
                     style: ButtonStyle(
