@@ -11,6 +11,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //Controllers for textformfields
+  TextEditingController _userEmailController = TextEditingController();
+  TextEditingController _userPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +39,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 40,
                 ),
                 // Email Field
-                const TextField(
+                TextField(
+                  controller: _userEmailController,
                   obscureText: false,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       filled: true,
                       fillColor: AppColors.greenUplace,
                       border: OutlineInputBorder(),
@@ -47,9 +52,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
                 // Password Field
-                const TextField(
+                TextField(
+                  controller: _userPasswordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       filled: true,
                       fillColor: AppColors.greenUplace,
                       border: OutlineInputBorder(),
@@ -90,6 +96,10 @@ class _LoginPageState extends State<LoginPage> {
                           60, // Ajuste a altura do botão conforme necessário
                       child: ElevatedButton(
                         onPressed: () {
+                          String email = _userEmailController.text;
+                          String senha = _userPasswordController.text;
+                          print('Email: $email');
+                          print('Senha: $senha');
                           RoutesFunctions.gotoHomePage(context);
                         },
                         style: ButtonStyle(
