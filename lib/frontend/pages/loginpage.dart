@@ -96,10 +96,6 @@ class _LoginPageState extends State<LoginPage> {
                           60, // Ajuste a altura do botão conforme necessário
                       child: ElevatedButton(
                         onPressed: () {
-                          String email = _userEmailController.text;
-                          String senha = _userPasswordController.text;
-                          print('Email: $email');
-                          print('Senha: $senha');
                           RoutesFunctions.gotoHomePage(context);
                         },
                         style: ButtonStyle(

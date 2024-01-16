@@ -137,12 +137,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       String senha = _userPasswordController.text;
                       String confirmarSenha =
                           _userConfirmPasswordController.text;
-                      if (_isEmailValid && _isPasswordValid && senha == confirmarSenha){
+                      bool _isValid = _isValidRegister();
+                      if ( _isValid &&
+                          _isEmailValid &&
+                          _isPasswordValid &&
+                          senha == confirmarSenha) {
                         RoutesFunctions.gotoHomePage(context);
                       } else {
                         _showAlertDialog(context);
                       }
-                      //RoutesFunctions.gotoHomePage(context);
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
@@ -171,6 +174,19 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  bool _isValidRegister() {
+    bool _isValid = false;
+    if (_userNameController.text.isNotEmpty &&
+        _userEmailController.text.isNotEmpty &&
+        _userPasswordController.text.isNotEmpty &&
+        _userConfirmPasswordController.text.isNotEmpty) {
+      _isValid = true;
+    } else {
+      _isValid = false;
+    }
+    return _isValid;
+  }
+
   bool _isValidEmail(String email) {
     return email.contains('@') && email.contains('.');
   }
@@ -180,23 +196,21 @@ class _RegisterPageState extends State<RegisterPage> {
         password.contains(RegExp(r'[a-zA-Z]')) &&
         password.contains(RegExp(r'[0-9]'));
   }
+
   void _showAlertDialog(BuildContext context) {
-    // Cria o AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Erro no formulário!"),
       content: Text("Verifique se as informações estão válidas."),
       actions: [
-        // Adiciona botões ao alerta
         TextButton(
           onPressed: () {
-            Navigator.pop(context); // Fecha o alerta
+            Navigator.pop(context);
           },
           child: Text('Fechar'),
         ),
       ],
     );
 
-    // Mostra o AlertDialog
     showDialog(
       context: context,
       builder: (BuildContext context) {
