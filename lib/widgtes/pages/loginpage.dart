@@ -87,20 +87,20 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Container(
                         height:
-                            20), // Container superior (ajuste a altura para empurrar o botão para baixo)
-                    Container(), // Container inferior (pode ser ajustado para empurrar o botão para cima)
+                            20), // Top container (adjust the height by pushing the button down)
+                    Container(), // Lower container (can be adjusted to push button up)
                     Container(
                       width:
-                          180, // Ajuste a largura do botão conforme necessário
+                          180, // Adjust button width as needed
                       height:
-                          60, // Ajuste a altura do botão conforme necessário
+                          60, // Adjust button height as needed
                       child: ElevatedButton(
                         onPressed: () {
                           RoutesFunctions.gotoHomePage(context);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.blueUplace), // Cor de fundo do botão
+                              AppColors.blueUplace), // Background button color
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -112,8 +112,8 @@ class _LoginPageState extends State<LoginPage> {
                           'Entrar',
                           style: TextStyle(
                             color: AppColors
-                                .lightblueUplace, // Cor do texto 'Entrar'
-                            fontSize: 28, // Ajusta o tamanho do texto
+                                .lightblueUplace, // 'Log in' text color
+                            fontSize: 28, // Adjust text size
                           ),
                         ),
                       ),
