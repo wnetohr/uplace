@@ -4,6 +4,7 @@ import 'package:uplace/widgtes/pages/productspage.dart';
 import 'package:uplace/widgtes/pages/registerpage.dart';
 import 'package:uplace/widgtes/pages/sellerspage.dart';
 import 'package:uplace/widgtes/pages/servicespage.dart';
+import 'package:uplace/widgtes/pages/configspage.dart';
 
 class RoutesFunctions {
   static void gotoHomePage(BuildContext context) {
@@ -38,6 +39,14 @@ class RoutesFunctions {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => SellersPage()),
+    );
+  }
+        // CÓDIGO APENAS PARA TESTAR A configspage VISTO QUE A DE USUÁRIO VAI
+        // CONTER A MESMA, DEPOIS SERÁ ALTERADO
+  static void gotoSettingsPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SettingsPage()),
     );
   }
 }
