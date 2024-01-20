@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:uplace/frontend/colors.dart";
+import "package:uplace/widgtes/themes/colors.dart";
 
 final ThemeData uPlaceTheme = ThemeData(
   fontFamily: 'clarissans',

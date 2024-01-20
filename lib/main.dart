@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart'; //mouse acting as a touch
-import 'package:uplace/frontend/components/product_card.dart';
-import 'package:uplace/frontend/components/uplace_theme.dart';
-import 'package:uplace/frontend/colors.dart';
-import 'package:uplace/frontend/pages/homepage.dart';
-import 'package:firebase_core/firebase_core.dart'; //firebase
-import 'package:uplace/frontend/pages/loginpage.dart';
-import 'package:uplace/frontend/pages/sellerspage.dart';
-import 'firebase_options.dart'; //firebase
+import 'package:firebase_core/firebase_core.dart';
+import 'package:uplace/repository/implementations/firestore/firebase_options.dart';
+import 'package:uplace/widgtes/components/uplace_theme.dart';
+import 'package:uplace/widgtes/pages/loginpage.dart'; //firebase
 
 //Class that allows the horizontal scroll works on the 3 subpages,
 // since it was deprecated to use the mouse to act as a touch

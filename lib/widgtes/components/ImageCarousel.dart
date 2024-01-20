@@ -1,7 +1,4 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:uplace/frontend/colors.dart';
-import 'package:uplace/frontend/routes/routes.dart';
 
 class ImageCarousel extends StatelessWidget {
   final List<String> images;

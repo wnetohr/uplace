@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/frontend/colors.dart';
-import 'package:uplace/frontend/routes/routes.dart';
+import 'package:uplace/widgtes/themes/colors.dart';
+import 'package:uplace/widgtes/routes/routes.dart';
 
 class NavigationUplaceBar extends StatelessWidget {
   const NavigationUplaceBar({super.key});
@@ -26,6 +26,22 @@ class NavigationUplaceBar extends StatelessWidget {
           label: 'Perfil',
         )
       ],
+
+      // CÓDIGO APENAS PARA TESTAR A configspage VISTO QUE A DE USUÁRIO VAI
+      // CONTER A MESMA, DEPOIS SERÁ ALTERADO
+      onTap: (index) {
+        switch (index) {
+          case 0:
+            RoutesFunctions.gotoHomePage(context);
+            break;
+          case 1:
+            // Lidar com a navegação para a página de Favoritos
+            break;
+          case 2:
+            RoutesFunctions.gotoSettingsPage(context);
+            break;
+        }
+      },
     );
   }
 }

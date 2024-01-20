@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/frontend/colors.dart';
-import 'package:uplace/frontend/pages/sellerspage.dart';
+import 'package:uplace/widgtes/themes/colors.dart';
 
 class SellersBanner extends StatelessWidget {
   final String sellerName;

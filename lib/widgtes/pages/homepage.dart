@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/frontend/components/category_menu.dart';
-import 'package:uplace/frontend/components/navigation_bar.dart';
-import 'package:uplace/frontend/components/product_card.dart';
-import 'package:uplace/frontend/colors.dart';
-import 'package:uplace/frontend/routes/routes.dart';
-import 'package:uplace/frontend/components/ImageCarousel.dart';
+import 'package:uplace/widgtes/components/ImageCarousel.dart';
+import 'package:uplace/widgtes/components/category_menu.dart';
+import 'package:uplace/widgtes/components/navigation_bar.dart';
+import 'package:uplace/widgtes/components/product_card.dart';
+import 'package:uplace/widgtes/routes/routes.dart';
+import 'package:uplace/widgtes/themes/colors.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

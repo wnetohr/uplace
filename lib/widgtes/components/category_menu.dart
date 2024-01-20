@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/frontend/colors.dart';
-import 'package:uplace/frontend/routes/routes.dart';
+import 'package:uplace/widgtes/routes/routes.dart';
+import 'package:uplace/widgtes/themes/colors.dart';
 
 class CategoryMenu extends StatefulWidget {
   const CategoryMenu({super.key});

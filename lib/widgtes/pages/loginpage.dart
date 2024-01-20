@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/frontend/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:uplace/frontend/routes/routes.dart';
+import 'package:uplace/widgtes/routes/routes.dart';
+import 'package:uplace/widgtes/themes/colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,6 +11,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //Controllers for textformfields
+  TextEditingController _userEmailController = TextEditingController();
+  TextEditingController _userPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +39,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 40,
                 ),
                 // Email Field
-                const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
+                TextField(
+                  controller: _userEmailController,
+                  obscureText: false,
+                  decoration: const InputDecoration(
                       filled: true,
                       fillColor: AppColors.greenUplace,
                       border: OutlineInputBorder(),
@@ -47,9 +52,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
                 // Password Field
-                const TextField(
+                TextField(
+                  controller: _userPasswordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       filled: true,
                       fillColor: AppColors.greenUplace,
                       border: OutlineInputBorder(),
@@ -81,20 +87,20 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Container(
                         height:
-                            20), // Container superior (ajuste a altura para empurrar o botão para baixo)
-                    Container(), // Container inferior (pode ser ajustado para empurrar o botão para cima)
+                            20), // Top container (adjust the height by pushing the button down)
+                    Container(), // Lower container (can be adjusted to push button up)
                     Container(
                       width:
-                          180, // Ajuste a largura do botão conforme necessário
+                          180, // Adjust button width as needed
                       height:
-                          60, // Ajuste a altura do botão conforme necessário
+                          60, // Adjust button height as needed
                       child: ElevatedButton(
                         onPressed: () {
                           RoutesFunctions.gotoHomePage(context);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.blueUplace), // Cor de fundo do botão
+                              AppColors.blueUplace), // Background button color
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -106,8 +112,8 @@ class _LoginPageState extends State<LoginPage> {
                           'Entrar',
                           style: TextStyle(
                             color: AppColors
-                                .lightblueUplace, // Cor do texto 'Entrar'
-                            fontSize: 28, // Ajusta o tamanho do texto
+                                .lightblueUplace, // 'Log in' text color
+                            fontSize: 28, // Adjust text size
                           ),
                         ),
                       ),
@@ -116,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 const SizedBox(
-                  height: 100,
+                  height: 50,
                 ),
 
                 // Login Social
@@ -171,6 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Sign Up Button
                 TextButton(
                   onPressed: () {
+                    RoutesFunctions.gotoRegisterPage(context);
                     // Add logic for sign up
                   },
                   style: TextButton.styleFrom(foregroundColor: Colors.black),
