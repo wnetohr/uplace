@@ -1,4 +1,4 @@
-import 'package:uplace/models/item.dart';
+import 'package:uplace/repository/interfaces/item.dart';
 
 class Food extends Item {
   Food({
