@@ -38,7 +38,7 @@ class NavigationUplaceBar extends StatelessWidget {
             // Lidar com a navegação para a página de Favoritos
             break;
           case 2:
-            RoutesFunctions.gotoSettingsPage(context);
+            RoutesFunctions.gotoProfilePage(context);
             break;
         }
       },

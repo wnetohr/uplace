@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uplace/widgtes/pages/homepage.dart';
 import 'package:uplace/widgtes/pages/productspage.dart';
+import 'package:uplace/widgtes/pages/profilepage.dart';
 import 'package:uplace/widgtes/pages/registerpage.dart';
 import 'package:uplace/widgtes/pages/sellerspage.dart';
 import 'package:uplace/widgtes/pages/servicespage.dart';
@@ -18,6 +19,12 @@ class RoutesFunctions {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => RegisterPage()),
+    );
+  }
+  static void gotoProfilePage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ProfilePage()),
     );
   }
 
