@@ -28,20 +28,20 @@ class SettingsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 360, // Defina a largura desejada
-              height: 60, // Defina a altura desejada
+              width: 360, // Defining width
+              height: 60, // Defining height
               child: ElevatedButton(
                 onPressed: () {
-                  // Implementar a ação do botão 'Sobre esta versão'
+                  // Implement the 'Sobre esta versão' button action
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blueUplace, // Cor de fundo do botão
+                  backgroundColor: AppColors.blueUplace, // Button background color
                 ),
                 child: const Text(
                   'Sobre esta versão',
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white, // Cor do texto do botão
+                    color: Colors.white, // Button text color
                   ),
                 ),
               ),
@@ -52,16 +52,16 @@ class SettingsPage extends StatelessWidget {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  // Implementar a ação do botão 'Notificações'
+                  // Implement the 'Notificações' button action 
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blueUplace, // Cor de fundo do botão
+                  backgroundColor: AppColors.blueUplace, // Button background color
                 ),
                 child: const Text(
                   'Notificações',
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white, // Cor do texto do botão
+                    color: Colors.white, // Button text color
                   ),
                 ),
               ),
@@ -72,16 +72,16 @@ class SettingsPage extends StatelessWidget {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  // Implementar a ação do botão 'Dúvidas frequentes'
+                  // Implement the 'Dúvidas frequentes' button action
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blueUplace, // Cor de fundo do botão
+                  backgroundColor: AppColors.blueUplace, // Button background color
                 ),
                 child: const Text(
                   'Dúvidas frequentes',
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white, // Cor do texto do botão
+                    color: Colors.white, // Button text color
                   ),
                 ),
               ),
@@ -95,13 +95,13 @@ class SettingsPage extends StatelessWidget {
                   // Implementar a ação do botão 'Sair da sua conta'
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blueUplace, // Cor de fundo do botão
+                  backgroundColor: AppColors.blueUplace, // Button background color
                 ),
                 child: const Text(
                   'Sair da sua conta',
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white, // Cor do texto do botão
+                    color: Colors.white, // Button text color
                   ),
                 ),
               ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/widgtes/pages/favoritespage.dart';
 import 'package:uplace/widgtes/pages/homepage.dart';
 import 'package:uplace/widgtes/pages/productspage.dart';
+import 'package:uplace/widgtes/pages/profilepage.dart';
 import 'package:uplace/widgtes/pages/registerpage.dart';
 import 'package:uplace/widgtes/pages/sellerspage.dart';
 import 'package:uplace/widgtes/pages/servicespage.dart';
@@ -20,7 +22,18 @@ class RoutesFunctions {
       MaterialPageRoute(builder: (context) => RegisterPage()),
     );
   }
-
+  static void gotoProfilePage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ProfilePage()),
+    );
+  }
+  static void gotoFavoritesPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => FavoritesPage()),
+    );
+  }
   static void gotoProductPage(BuildContext context) {
     Navigator.push(
       context,

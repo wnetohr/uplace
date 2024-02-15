@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/application/dtos/newUserDTO.dart';
+import 'package:uplace/controller/implementations/authController.dart';
+import 'package:uplace/models/consumer.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
@@ -19,6 +22,8 @@ class _RegisterPageState extends State<RegisterPage> {
   //Booleands for password and email verification
   bool _isPasswordValid = true;
   bool _isEmailValid = true;
+
+  final AuthController _authController = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +137,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   width: 220, // Ajuste a largura do botão conforme necessário
                   height: 60, // Ajuste a altura do botão conforme necessário
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       //Local para enviar o valor dos controllers para o banco de dados
                       String senha = _userPasswordController.text;
                       String confirmarSenha =
@@ -142,9 +147,24 @@ class _RegisterPageState extends State<RegisterPage> {
                           _isEmailValid &&
                           _isPasswordValid &&
                           senha == confirmarSenha) {
-                        RoutesFunctions.gotoHomePage(context);
+                        var newUser = NewUserDTO.FromDefaultEmail(
+                            _userEmailController.text,
+                            _userPasswordController.text,
+                            _userConfirmPasswordController.text,
+                            _userNameController.text,
+                            DateTime(2000, 12, 19));
+                        var response =
+                            await _authController.emailSignUp(newUser);
+                        if (response.isValid) {
+                          var consumer = response.data as Consumer;
+                          print(consumer);
+                          RoutesFunctions.gotoHomePage(context);
+                        } else {
+                          _showAlertDialog(context, response.error!);
+                        }
                       } else {
-                        _showAlertDialog(context);
+                        _showAlertDialog(context,
+                            "Verifique se as informações estão válidas.");
                       }
                     },
                     style: ButtonStyle(
@@ -197,10 +217,10 @@ class _RegisterPageState extends State<RegisterPage> {
         password.contains(RegExp(r'[0-9]'));
   }
 
-  void _showAlertDialog(BuildContext context) {
+  void _showAlertDialog(BuildContext context, String errorMessage) {
     AlertDialog alert = AlertDialog(
       title: Text("Erro no formulário!"),
-      content: Text("Verifique se as informações estão válidas."),
+      content: Text(errorMessage),
       actions: [
         TextButton(
           onPressed: () {
