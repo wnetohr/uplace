@@ -3,8 +3,10 @@ import 'package:uplace/application/dtos/newUserDTO.dart';
 import 'package:uplace/application/services/interfaces/baseService.dart';
 import 'package:uplace/models/consumer.dart';
 import 'package:uplace/repository/implementations/authentication/firebaseAuthRepository.dart';
+import 'package:uplace/repository/implementations/firestore/bannedUsersFSRepository.dart';
 import 'package:uplace/repository/implementations/firestore/consumerFSRepository.dart';
 import 'package:uplace/repository/interfaces/authRepositoryInterface.dart';
+import 'package:uplace/repository/interfaces/bannedUsersRepositoryInterface.dart';
 import 'package:uplace/repository/interfaces/consumerRepositoryInterface.dart';
 
 class AuthService extends BaseService {
@@ -12,6 +14,8 @@ class AuthService extends BaseService {
       FirebaseAuthRepository();
   final ConsumerRepositoryInterface _consumerFSRepository =
       ConsumerFSRepository();
+  final BannedUsersRepositoryInterface _bannedUsersRepository =
+      BannedUsersFSRepository();
 
   AuthService();
 
@@ -22,6 +26,14 @@ class AuthService extends BaseService {
     }
     if (newUser.password.length < 6) {
       setError("A senha deve conter ao menos 6 caracteres");
+      return null;
+    }
+
+    var bannedUsers = await _bannedUsersRepository.getBannedUsers();
+    if (bannedUsers != null &&
+        bannedUsers.isNotEmpty &&
+        bannedUsers.any((e) => e.userEmail == newUser.email)) {
+      setError("Usuario banido");
       return null;
     }
 
