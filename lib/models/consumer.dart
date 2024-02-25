@@ -3,12 +3,15 @@ class Consumer {
   String authId;
   String email;
   DateTime birthDate;
+  DateTime createdOn;
 
-  Consumer(
-      {required this.name,
-      required this.birthDate,
-      required this.email,
-      required this.authId});
+  Consumer({
+    required this.name,
+    required this.birthDate,
+    required this.email,
+    required this.authId,
+    required this.createdOn,
+  });
 
   factory Consumer.FromFirebase(Map<String, dynamic> json, String authId) {
     return Consumer(
@@ -16,6 +19,7 @@ class Consumer {
       birthDate: json["birthDate"].toDate(),
       email: json["email"],
       authId: authId,
+      createdOn: json["createdOn"].toDate(),
     );
   }
 
@@ -25,6 +29,7 @@ class Consumer {
         'name: $name, '
         'birthDate: $birthDate, '
         'email: $email, '
-        'authId: $authId)';
+        'authId: $authId) '
+        'createdOn: $createdOn,';
   }
 }

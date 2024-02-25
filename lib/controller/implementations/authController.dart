@@ -15,4 +15,8 @@ class AuthController extends BaseController {
   Future<Response> emailLogin(String email, String password) async {
     return awnser(await _authService.emailLogin(email, password));
   }
+
+  Future<Response> signOut() async {
+    return awnser(await _authService.signOut());
+  }
 }

@@ -34,7 +34,7 @@ class BaseController {
         bannedUsers.isNotEmpty &&
         bannedUsers.any((e) => e.email == user.email)) {
       _errorHandler.setError("Usuario banido");
-      _firebaseAuthRepository.signOut();
+      await _firebaseAuthRepository.signOut();
       RoutesFunctions.gotoLoginPage(_context);
       return false;
     }

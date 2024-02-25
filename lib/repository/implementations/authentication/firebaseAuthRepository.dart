@@ -83,13 +83,15 @@ class FirebaseAuthRepository extends AuthRepositoryInterface {
     }
   }
 
+  @override
   User? getUser() {
     var userAuth = _db.currentUser;
     return userAuth;
   }
 
-  void signOut() {
-    _db.signOut();
+  @override
+  Future<void> signOut() async {
+    await _db.signOut();
   }
 
   // void firebaseEmailDelete() async {
