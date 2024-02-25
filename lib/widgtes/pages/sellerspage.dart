@@ -35,7 +35,12 @@ class _SellersPageState extends State<SellersPage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      RoutesFunctions.gotoFavoritesPage(context);
+                      RoutesFunctions.gotoAddToCart(
+                          context,
+                          'Brigadeiro',
+                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                          4.50,
+                          'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
                     },
                     child: SellersProducts(
                         productName: 'Brigadeiro',
@@ -47,7 +52,12 @@ class _SellersPageState extends State<SellersPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      RoutesFunctions.gotoFavoritesPage(context);
+                      RoutesFunctions.gotoAddToCart(
+                          context,
+                          'Cupcake de Chocolate',
+                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                          7.00,
+                          'https://images.pexels.com/photos/913136/pexels-photo-913136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
                     },
                     child: SellersProducts(
                         productName: 'Cupcake de Chocolate',
@@ -59,7 +69,12 @@ class _SellersPageState extends State<SellersPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      RoutesFunctions.gotoFavoritesPage(context);
+                      RoutesFunctions.gotoAddToCart(
+                          context,
+                          'Cupcake de Morango',
+                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                          7.50,
+                          'https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
                     },
                     child: SellersProducts(
                         productName: 'Cupcake de Morango',
@@ -71,7 +86,12 @@ class _SellersPageState extends State<SellersPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      RoutesFunctions.gotoFavoritesPage(context);
+                      RoutesFunctions.gotoAddToCart(
+                          context,
+                          'Dunots',
+                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                          5.50,
+                          'https://images.pexels.com/photos/867452/pexels-photo-867452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
                     },
                     child: SellersProducts(
                         productName: 'Dunots',
@@ -83,7 +103,12 @@ class _SellersPageState extends State<SellersPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      RoutesFunctions.gotoFavoritesPage(context);
+                      RoutesFunctions.gotoAddToCart(
+                          context,
+                          'Bolo floresta negra',
+                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                          8.50,
+                          'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
                     },
                     child: SellersProducts(
                         productName: 'Bolo floresta negra',
