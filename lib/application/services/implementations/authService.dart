@@ -32,7 +32,7 @@ class AuthService extends BaseService {
     var bannedUsers = await _bannedUsersRepository.getBannedUsers();
     if (bannedUsers != null &&
         bannedUsers.isNotEmpty &&
-        bannedUsers.any((e) => e.userEmail == newUser.email)) {
+        bannedUsers.any((e) => e.email == newUser.email)) {
       setError("Usuario banido");
       return null;
     }
@@ -66,6 +66,13 @@ class AuthService extends BaseService {
   }
 
   Future<Consumer?> emailLogin(String email, String password) async {
+    var bannedUsers = await _bannedUsersRepository.getBannedUsers();
+    if (bannedUsers != null &&
+        bannedUsers.isNotEmpty &&
+        bannedUsers.any((e) => e.email == email)) {
+      setError("Usuario banido");
+      return null;
+    }
     var authUser =
         await _firebaseAuthRepository.firebaseEmailLogin(email, password);
 

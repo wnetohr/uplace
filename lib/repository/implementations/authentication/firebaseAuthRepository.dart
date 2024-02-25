@@ -83,6 +83,11 @@ class FirebaseAuthRepository extends AuthRepositoryInterface {
     }
   }
 
+  User? getUser() {
+    var userAuth = _db.currentUser;
+    return userAuth;
+  }
+
   // void firebaseEmailDelete() async {
   //   try {
   //     await FirebaseAuth.instance.currentUser!.delete();

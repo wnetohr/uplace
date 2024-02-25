@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/controller/implementations/consumerController.dart';
+import 'package:uplace/models/consumer.dart';
 import 'package:uplace/widgtes/components/navigation_bar.dart';
+import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  var userName = "Usuário";
+
+  final ConsumerController _consumerController = ConsumerController();
+
+  @override
+  void initState() {
+    super.initState();
+    _consumerController.addContext(context);
+    getConsumer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,22 +35,22 @@ class ProfilePage extends StatelessWidget {
             flex: 1,
             child: Container(
               color: AppColors.blueUplace,
-              child: const Row(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundImage: NetworkImage(
                         'https://images.pexels.com/photos/12842333/pexels-photo-12842333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                     radius: 50.0,
                     backgroundColor: Colors.grey,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 50,
                   ),
                   Text(
-                    'Usuário',
-                    style: TextStyle(fontSize: 34, color: Colors.white),
+                    userName,
+                    style: const TextStyle(fontSize: 34, color: Colors.white),
                   )
                 ],
               ),
@@ -52,16 +72,16 @@ class ProfilePage extends StatelessWidget {
                             backgroundColor:
                                 AppColors.blueUplace, // Cor de fundo do botão
                           ),
-                          child: Column(
+                          child: const Column(
                             children: [
-                              const Text(
+                              Text(
                                 'Tornar-se um vendedor',
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.white, // Cor do texto do botão
                                 ),
                               ),
-                              const Text(
+                              Text(
                                 'Anuncie para outros compradores',
                                 style: TextStyle(
                                   fontSize: 14,
@@ -71,7 +91,7 @@ class ProfilePage extends StatelessWidget {
                             ],
                           )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     SizedBox(
@@ -94,7 +114,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     SizedBox(
@@ -115,7 +135,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     SizedBox(
@@ -145,5 +165,17 @@ class ProfilePage extends StatelessWidget {
       ),
       bottomNavigationBar: const NavigationUplaceBar(),
     );
+  }
+
+  void getConsumer() async {
+    var response = await _consumerController.getConsumer();
+    if (response.isValid) {
+      setState(() {
+        var consumer = response.data as Consumer;
+        userName = consumer.name;
+      });
+    } else {
+      ErrorAlert(context, errorMessage: response.error);
+    }
   }
 }

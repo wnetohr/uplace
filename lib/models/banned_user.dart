@@ -1,11 +1,11 @@
 class BannedUser {
-  String userEmail;
+  String email;
 
-  BannedUser({required this.userEmail});
+  BannedUser({required this.email});
 
   factory BannedUser.FromFirebase(Map<String, dynamic> json) {
     return BannedUser(
-      userEmail: json["userEmail"],
+      email: json["email"],
     );
   }
 }
