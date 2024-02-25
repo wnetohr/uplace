@@ -3,6 +3,7 @@ import 'package:uplace/widgtes/components/navigation_bar.dart';
 import 'package:uplace/widgtes/components/product_card.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
+import 'package:uplace/widgtes/components/ImageCarousel.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key, required this.title});
@@ -70,7 +71,7 @@ class _ProductPageState extends State<ProductPage> {
                 ),
                 Expanded(
                   child: DecoratedBox(
-                      decoration: UnderlineTabIndicator(
+                      decoration: const UnderlineTabIndicator(
                         borderSide: BorderSide(
                           color: AppColors.blueUplace, // Cor do sublinhado
                           width: 2.0, // Largura do sublinhado
@@ -80,7 +81,7 @@ class _ProductPageState extends State<ProductPage> {
                         onPressed: () {
                           RoutesFunctions.gotoProductPage(context);
                         },
-                        child: Text(
+                        child: const Text(
                           'Produtos',
                           style: TextStyle(
                             fontSize: 15.0, // Tamanho do texto
@@ -105,6 +106,15 @@ class _ProductPageState extends State<ProductPage> {
                 ))
               ],
             ),
+          ),
+          const Expanded(
+            flex: 2,
+            child: ImageCarousel(images: [
+              //Carrossel dos Produtos
+              'https://images.pexels.com/photos/632470/pexels-photo-632470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+              'https://images.pexels.com/photos/5088021/pexels-photo-5088021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+              'https://images.pexels.com/photos/963276/pexels-photo-963276.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+            ]),
           ),
           const Expanded(
             flex: 6,

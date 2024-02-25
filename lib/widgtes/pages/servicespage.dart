@@ -3,6 +3,7 @@ import 'package:uplace/widgtes/components/navigation_bar.dart';
 import 'package:uplace/widgtes/components/product_card.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
+import 'package:uplace/widgtes/components/ImageCarousel.dart';
 
 class ServicePage extends StatefulWidget {
   const ServicePage({super.key, required this.title});
@@ -106,6 +107,15 @@ class _ServicePageState extends State<ServicePage> {
                 ))
               ],
             ),
+          ),
+          const Expanded(
+            flex: 2,
+            child: ImageCarousel(images: [
+              //Carrossel dos Serviços
+              'https://media.istockphoto.com/id/1280363533/pt/foto/female-translator-working-on-a-document.jpg?b=1&s=612x612&w=0&k=20&c=_xuKyQ_IIW3WYlvxAUesQngKh-iF2QZ8mT0ioWe0tbc=',
+              'https://media.istockphoto.com/id/491618768/pt/foto/de-línguas-estrangeiras-tradução-conceito-de-tradução-online.jpg?b=1&s=612x612&w=0&k=20&c=R60t0rhS3jPsUyMj-rGPhao__y9twWhqh9zqV7XN1-M=',
+              'https://images.pexels.com/photos/1058461/pexels-photo-1058461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+            ]),
           ),
           const Expanded(
             flex: 6,
