@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:uplace/controller/implementations/authController.dart';
-import 'package:uplace/models/consumer.dart';
 import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
@@ -19,6 +18,12 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _userPasswordController = TextEditingController();
 
   final AuthController _authController = AuthController();
+
+  @override
+  void initState() {
+    super.initState();
+    _authController.addContext(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -220,8 +225,6 @@ class _LoginPageState extends State<LoginPage> {
 
     var response = await _authController.emailLogin(email, password);
     if (response.isValid) {
-      var consumer = response.data as Consumer;
-      print(consumer);
       RoutesFunctions.gotoHomePage(context);
     } else {
       ErrorAlert(context, errorMessage: response.error!);
