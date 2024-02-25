@@ -5,6 +5,7 @@ import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -42,9 +43,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 30,
                 ),
                 const CircleAvatar(
-                  radius: 80.0,
-                  backgroundColor: AppColors.blueUplace,
-                ),
+                    backgroundImage: NetworkImage('https://i.postimg.cc/yxrffDWf/user-icon-loginpage.png'),
+                    radius: 90.0,
+                    backgroundColor: AppColors.blueUplace,
+                  ),
                 const SizedBox(
                   height: 40,
                 ),
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                       filled: true,
                       fillColor: AppColors.greenUplace,
                       border: OutlineInputBorder(),
-                      labelText: 'Seu endereço de e-mail'),
+                      labelText: 'Insira seu endereço de e-mail'),
                 ),
                 const SizedBox(
                   height: 10,
@@ -69,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                       filled: true,
                       fillColor: AppColors.greenUplace,
                       border: OutlineInputBorder(),
-                      labelText: '**********'),
+                      labelText: 'Insira sua senha'),
                 ),
                 const SizedBox(
                   height: 5,
