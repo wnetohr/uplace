@@ -3,8 +3,10 @@ import 'package:uplace/controller/handling/errorHandler.dart';
 import 'package:uplace/controller/handling/response.dart';
 import 'package:uplace/repository/implementations/authentication/firebaseAuthRepository.dart';
 import 'package:uplace/repository/implementations/firestore/bannedUsersFSRepository.dart';
+import 'package:uplace/repository/implementations/firestore/consumerFSRepository.dart';
 import 'package:uplace/repository/interfaces/authRepositoryInterface.dart';
 import 'package:uplace/repository/interfaces/bannedUsersRepositoryInterface.dart';
+import 'package:uplace/repository/interfaces/consumerRepositoryInterface.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 
 class BaseController {
@@ -13,6 +15,8 @@ class BaseController {
       BannedUsersFSRepository();
   final AuthRepositoryInterface _firebaseAuthRepository =
       FirebaseAuthRepository();
+  final ConsumerRepositoryInterface _consumerRepository =
+      ConsumerFSRepository();
 
   late BuildContext _context;
 
@@ -31,6 +35,7 @@ class BaseController {
     var user = _firebaseAuthRepository.getUser();
     if (user == null) {
       _errorHandler.setError("Não foi possivel validar o login do seu usuário");
+      _kickUser();
       return false;
     }
 
