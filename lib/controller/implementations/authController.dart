@@ -11,4 +11,12 @@ class AuthController extends BaseController {
   Future<Response> emailSignUp(NewUserDTO newUser) async {
     return awnser(await _authService.emailSignUp(newUser));
   }
+
+  Future<Response> emailLogin(String email, String password) async {
+    return awnser(await _authService.emailLogin(email, password));
+  }
+
+  Future<Response> signOut() async {
+    return awnser(await _authService.signOut());
+  }
 }

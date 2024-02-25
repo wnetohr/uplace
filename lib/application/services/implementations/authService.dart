@@ -32,7 +32,7 @@ class AuthService extends BaseService {
     var bannedUsers = await _bannedUsersRepository.getBannedUsers();
     if (bannedUsers != null &&
         bannedUsers.isNotEmpty &&
-        bannedUsers.any((e) => e.userEmail == newUser.email)) {
+        bannedUsers.any((e) => e.email == newUser.email)) {
       setError("Usuario banido");
       return null;
     }
@@ -50,17 +50,49 @@ class AuthService extends BaseService {
     bool createdConsumer = await _consumerFSRepository.createConsumer(
       newUser.name,
       newUser.birthDate,
+      newUser.email,
       consumerId,
     );
 
     if (!createdConsumer) {
-      // TODO: remover de firebase auth
-
+      await _firebaseAuthRepository.signOut();
+      // TODO: deletar usuario
       setError("Nao foi possivel vincular seu usuario ao sistema");
       return null;
     }
     var consumer = await _consumerFSRepository.getConsumerById(consumerId);
 
     return consumer;
+  }
+
+  Future<Consumer?> emailLogin(String email, String password) async {
+    var bannedUsers = await _bannedUsersRepository.getBannedUsers();
+    if (bannedUsers != null &&
+        bannedUsers.isNotEmpty &&
+        bannedUsers.any((e) => e.email == email)) {
+      setError("Usuario banido");
+      return null;
+    }
+    var authUser =
+        await _firebaseAuthRepository.firebaseEmailLogin(email, password);
+
+    if (authUser == null || authUser.user == null) {
+      return null;
+    }
+    var user = authUser.user!;
+
+    var consumer = await _consumerFSRepository.getConsumerById(user.uid);
+    if (consumer == null) {
+      setError("Usuário não encontrado");
+      return null;
+    }
+
+    return consumer;
+  }
+
+  Future<bool> signOut() async {
+    await _firebaseAuthRepository.signOut();
+    var user = _firebaseAuthRepository.getUser();
+    return user == null;
   }
 }

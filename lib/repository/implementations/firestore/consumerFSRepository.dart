@@ -23,10 +23,12 @@ class ConsumerFSRepository extends ConsumerRepositoryInterface {
 
   @override
   Future<bool> createConsumer(
-      String name, DateTime birthDate, String userUID) async {
+      String name, DateTime birthDate, String email, String userUID) async {
     var user = <String, dynamic>{
       "name": name,
       "birthDate": birthDate,
+      "email": email,
+      "createdOn": DateTime.now()
     };
     return await db
         .doc(userUID)
