@@ -88,16 +88,18 @@ class FirebaseAuthRepository extends AuthRepositoryInterface {
     return userAuth;
   }
 
+  void signOut() {
+    _db.signOut();
+  }
+
   // void firebaseEmailDelete() async {
   //   try {
   //     await FirebaseAuth.instance.currentUser!.delete();
   //   } on FirebaseAuthException catch (e) {
   //     if (e.code == "requires-recent-login") {
   //     } else {
-  //       // Handle other Firebase exceptions
   //     }
   //   } catch (e) {
-  //     // Handle general exception
   //   }
   // }
 }

@@ -55,8 +55,8 @@ class AuthService extends BaseService {
     );
 
     if (!createdConsumer) {
-      // TODO: remover de firebase auth
-
+      _firebaseAuthRepository.signOut();
+      // TODO: deletar usuario
       setError("Nao foi possivel vincular seu usuario ao sistema");
       return null;
     }
