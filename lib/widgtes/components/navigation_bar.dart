@@ -27,8 +27,6 @@ class NavigationUplaceBar extends StatelessWidget {
         )
       ],
 
-      // CÓDIGO APENAS PARA TESTAR A configspage VISTO QUE A DE USUÁRIO VAI
-      // CONTER A MESMA, DEPOIS SERÁ ALTERADO
       onTap: (index) {
         switch (index) {
           case 0:
