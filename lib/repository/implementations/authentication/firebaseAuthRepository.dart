@@ -51,6 +51,38 @@ class FirebaseAuthRepository extends AuthRepositoryInterface {
     }
   }
 
+  @override
+  Future<UserCredential?> firebaseEmailLogin(
+    String email,
+    String password,
+  ) async {
+    try {
+      var user = await _db.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return user;
+    } on FirebaseAuthException catch (error) {
+      switch (error.code) {
+        case "invalid-email":
+          setError("Email de usuário invalido");
+          return null;
+        case "user-not-found":
+          setError("Esse usuário não existe");
+          return null;
+        case "wrong-password":
+          setError("Não existe um usuário com essas credenciais");
+          return null;
+        default:
+          setError("Ocorreu um erro ao acessar sua conta");
+          return null;
+      }
+    } catch (error) {
+      setError("Ocorreu um erro desconhecido ao acessar sua conta");
+      return null;
+    }
+  }
+
   // void firebaseEmailDelete() async {
   //   try {
   //     await FirebaseAuth.instance.currentUser!.delete();

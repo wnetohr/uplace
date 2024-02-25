@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:uplace/controller/implementations/authController.dart';
+import 'package:uplace/models/consumer.dart';
+import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
@@ -12,8 +15,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //Controllers for textformfields
-  TextEditingController _userEmailController = TextEditingController();
-  TextEditingController _userPasswordController = TextEditingController();
+  final TextEditingController _userEmailController = TextEditingController();
+  final TextEditingController _userPasswordController = TextEditingController();
+
+  final AuthController _authController = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -90,13 +95,11 @@ class _LoginPageState extends State<LoginPage> {
                             20), // Top container (adjust the height by pushing the button down)
                     Container(), // Lower container (can be adjusted to push button up)
                     Container(
-                      width:
-                          180, // Adjust button width as needed
-                      height:
-                          60, // Adjust button height as needed
+                      width: 180, // Adjust button width as needed
+                      height: 60, // Adjust button height as needed
                       child: ElevatedButton(
                         onPressed: () {
-                          RoutesFunctions.gotoHomePage(context);
+                          _login();
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -189,5 +192,39 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  bool _isValidEmail(String email) {
+    return email.contains('@') && email.contains('.');
+  }
+
+  bool _isValidPassword(String password) {
+    return password.length >= 8 &&
+        password.contains(RegExp(r'[a-zA-Z]')) &&
+        password.contains(RegExp(r'[0-9]'));
+  }
+
+  void _login() async {
+    var email = _userEmailController.text;
+    var password = _userPasswordController.text;
+
+    if (!_isValidEmail(email)) {
+      ErrorAlert(context, errorMessage: "Email invalido");
+      return;
+    }
+
+    if (!_isValidPassword(password)) {
+      ErrorAlert(context, errorMessage: "Senha invalido");
+      return;
+    }
+
+    var response = await _authController.emailLogin(email, password);
+    if (response.isValid) {
+      var consumer = response.data as Consumer;
+      print(consumer);
+      RoutesFunctions.gotoHomePage(context);
+    } else {
+      ErrorAlert(context, errorMessage: response.error!);
+    }
   }
 }
