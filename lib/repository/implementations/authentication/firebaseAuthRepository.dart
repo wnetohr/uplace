@@ -83,9 +83,15 @@ class FirebaseAuthRepository extends AuthRepositoryInterface {
     }
   }
 
+  @override
   User? getUser() {
     var userAuth = _db.currentUser;
     return userAuth;
+  }
+
+  @override
+  Future<void> signOut() async {
+    await _db.signOut();
   }
 
   // void firebaseEmailDelete() async {
@@ -94,10 +100,8 @@ class FirebaseAuthRepository extends AuthRepositoryInterface {
   //   } on FirebaseAuthException catch (e) {
   //     if (e.code == "requires-recent-login") {
   //     } else {
-  //       // Handle other Firebase exceptions
   //     }
   //   } catch (e) {
-  //     // Handle general exception
   //   }
   // }
 }

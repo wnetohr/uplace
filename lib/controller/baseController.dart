@@ -13,15 +13,9 @@ class BaseController {
       BannedUsersFSRepository();
   final AuthRepositoryInterface _firebaseAuthRepository =
       FirebaseAuthRepository();
-
   late BuildContext _context;
 
   BaseController();
-
-  void _kickUser() {
-    // TODO: deslogar usuario
-    RoutesFunctions.gotoLoginPage(_context);
-  }
 
   void addContext(BuildContext context) {
     _context = context;
@@ -31,6 +25,7 @@ class BaseController {
     var user = _firebaseAuthRepository.getUser();
     if (user == null) {
       _errorHandler.setError("Não foi possivel validar o login do seu usuário");
+      RoutesFunctions.gotoLoginPage(_context);
       return false;
     }
 
@@ -39,7 +34,8 @@ class BaseController {
         bannedUsers.isNotEmpty &&
         bannedUsers.any((e) => e.email == user.email)) {
       _errorHandler.setError("Usuario banido");
-      _kickUser();
+      await _firebaseAuthRepository.signOut();
+      RoutesFunctions.gotoLoginPage(_context);
       return false;
     }
 

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/controller/implementations/authController.dart';
+import 'package:uplace/widgtes/components/utils/error_alert.dart';
+import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class MyApp extends StatelessWidget {
@@ -10,7 +13,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  AuthController _authController = AuthController();
+
+  @override
+  void initState() {
+    super.initState();
+    _authController.addContext(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +51,8 @@ class SettingsPage extends StatelessWidget {
                   // Implement the 'Sobre esta versão' button action
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blueUplace, // Button background color
+                  backgroundColor:
+                      AppColors.blueUplace, // Button background color
                 ),
                 child: const Text(
                   'Sobre esta versão',
@@ -52,10 +69,11 @@ class SettingsPage extends StatelessWidget {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  // Implement the 'Notificações' button action 
+                  // Implement the 'Notificações' button action
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blueUplace, // Button background color
+                  backgroundColor:
+                      AppColors.blueUplace, // Button background color
                 ),
                 child: const Text(
                   'Notificações',
@@ -75,7 +93,8 @@ class SettingsPage extends StatelessWidget {
                   // Implement the 'Dúvidas frequentes' button action
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blueUplace, // Button background color
+                  backgroundColor:
+                      AppColors.blueUplace, // Button background color
                 ),
                 child: const Text(
                   'Dúvidas frequentes',
@@ -92,10 +111,12 @@ class SettingsPage extends StatelessWidget {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  // Implementar a ação do botão 'Sair da sua conta'
+                  // TODO: Criar tela de confirmacao de acao
+                  signOff();
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blueUplace, // Button background color
+                  backgroundColor:
+                      AppColors.blueUplace, // Button background color
                 ),
                 child: const Text(
                   'Sair da sua conta',
@@ -111,5 +132,20 @@ class SettingsPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void signOff() async {
+    var response = await _authController.signOut();
+    if (response.isValid) {
+      var userOff = response.data as bool;
+      if (userOff) {
+        RoutesFunctions.gotoLoginPage(context);
+        return null;
+      }
+      ErrorAlert(context,
+          errorMessage: "Não foi possível ao deslogar o usuário");
+    } else {
+      ErrorAlert(context, errorMessage: "Erro ao deslogar o usuário");
+    }
   }
 }

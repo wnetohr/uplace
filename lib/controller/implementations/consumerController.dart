@@ -8,7 +8,10 @@ class ConsumerController extends BaseController {
   ConsumerController();
 
   Future<Response> getConsumer() async {
-    validateLogedUser();
+    var validate = await validateLogedUser();
+    if (!validate) {
+      return awnser(null);
+    }
     return awnser(await _consumerService.getConsumer());
   }
 }

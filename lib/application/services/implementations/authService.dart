@@ -55,8 +55,8 @@ class AuthService extends BaseService {
     );
 
     if (!createdConsumer) {
-      // TODO: remover de firebase auth
-
+      await _firebaseAuthRepository.signOut();
+      // TODO: deletar usuario
       setError("Nao foi possivel vincular seu usuario ao sistema");
       return null;
     }
@@ -88,5 +88,11 @@ class AuthService extends BaseService {
     }
 
     return consumer;
+  }
+
+  Future<bool> signOut() async {
+    await _firebaseAuthRepository.signOut();
+    var user = _firebaseAuthRepository.getUser();
+    return user == null;
   }
 }

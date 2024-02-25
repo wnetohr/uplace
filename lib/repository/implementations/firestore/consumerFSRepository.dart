@@ -27,7 +27,8 @@ class ConsumerFSRepository extends ConsumerRepositoryInterface {
     var user = <String, dynamic>{
       "name": name,
       "birthDate": birthDate,
-      "email": email
+      "email": email,
+      "createdOn": DateTime.now()
     };
     return await db
         .doc(userUID)
