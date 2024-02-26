@@ -5,7 +5,6 @@ import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -43,10 +42,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 30,
                 ),
                 const CircleAvatar(
-                    backgroundImage: NetworkImage('https://i.postimg.cc/yxrffDWf/user-icon-loginpage.png'),
-                    radius: 90.0,
-                    backgroundColor: AppColors.blueUplace,
-                  ),
+                  child: Icon(Icons.person, size: 150, color: AppColors.whiteUplace),
+                  radius: 90.0,
+                  backgroundColor: AppColors.blueUplace,
+                ),
                 const SizedBox(
                   height: 40,
                 ),
@@ -56,8 +55,8 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: false,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: AppColors.greenUplace,
-                      border: OutlineInputBorder(),
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                       labelText: 'Insira seu endereço de e-mail'),
                 ),
                 const SizedBox(
@@ -69,8 +68,8 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: true,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: AppColors.greenUplace,
-                      border: OutlineInputBorder(),
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                       labelText: 'Insira sua senha'),
                 ),
                 const SizedBox(
@@ -122,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                           'Entrar',
                           style: TextStyle(
                             color: AppColors
-                                .lightblueUplace, // 'Log in' text color
+                                .greenUplace, // 'Log in' text color
                             fontSize: 28, // Adjust text size
                           ),
                         ),
