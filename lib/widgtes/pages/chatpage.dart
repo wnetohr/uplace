@@ -18,7 +18,7 @@ class ChatPage extends StatelessWidget {
               IconButton(
                 icon: const Icon(
                   Icons.arrow_back,
-                  color: Colors.white, // Definindo a cor do ícone como branca
+                  color: Colors.white,
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -44,17 +44,40 @@ class ChatPage extends StatelessWidget {
   }
 }
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
+  @override
+  _ChatScreenState createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  TextEditingController _controller = TextEditingController();
+  List<ChatMessageModel> _messages = [
+    ChatMessageModel(message: 'Olá, tudo bem?', isUser: false),
+    ChatMessageModel(message: 'Como vai você?', isUser: false),
+  ];
+
+  void _sendMessage() {
+    if (_controller.text.isNotEmpty) {
+      setState(() {
+        _messages.add(ChatMessageModel(
+          message: _controller.text,
+          isUser: true,
+        ));
+        _controller.clear();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Expanded(
-          child: ListView(
-            children: [
-              ChatMessage(message: 'Olá, tudo bem?'),
-              ChatMessage(message: 'Como vai você?'),
-            ],
+          child: ListView.builder(
+            itemCount: _messages.length,
+            itemBuilder: (context, index) {
+              return ChatMessage(messageModel: _messages[index]);
+            },
           ),
         ),
         const Divider(height: 1),
@@ -64,15 +87,16 @@ class ChatScreen extends StatelessWidget {
             children: [
               IconButton(
                 icon: const Icon(
-                  Icons.message_rounded, // Substituí o ícone por 'message_rounded'
-                  color: AppColors.blueUplace, // Definindo a cor do ícone como azul
+                  Icons.message_rounded,
+                  color: AppColors.blueUplace,
                 ),
                 onPressed: () {
                   // Implementar ação para finalizar negociação
                 },
               ),
-              const Expanded(
+              Expanded(
                 child: TextField(
+                  controller: _controller,
                   decoration: InputDecoration.collapsed(
                     hintText: 'Digite sua mensagem...',
                   ),
@@ -83,9 +107,7 @@ class ChatScreen extends StatelessWidget {
                   Icons.send,
                   color: AppColors.blueUplace,
                 ),
-                onPressed: () {
-                  // Implementar ação para enviar mensagem
-                },
+                onPressed: _sendMessage,
               ),
             ],
           ),
@@ -93,12 +115,25 @@ class ChatScreen extends StatelessWidget {
       ],
     );
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+}
+
+class ChatMessageModel {
+  final String message;
+  final bool isUser;
+
+  ChatMessageModel({required this.message, required this.isUser});
 }
 
 class ChatMessage extends StatelessWidget {
-  final String message;
+  final ChatMessageModel messageModel;
 
-  const ChatMessage({required this.message});
+  const ChatMessage({required this.messageModel});
 
   @override
   Widget build(BuildContext context) {
@@ -106,31 +141,45 @@ class ChatMessage extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: messageModel.isUser
+            ? MainAxisAlignment.end
+            : MainAxisAlignment.start,
         children: [
-          const CircleAvatar(
-            backgroundImage: NetworkImage(
-                'https://images.pexels.com/photos/247899/pexels-photo-247899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-          ),
-          const SizedBox(width: 8),
+          if (!messageModel.isUser)
+            const CircleAvatar(
+              backgroundImage: NetworkImage(
+                  'https://images.pexels.com/photos/247899/pexels-photo-247899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+            ),
+          if (!messageModel.isUser) const SizedBox(width: 8),
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: messageModel.isUser
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 4),
+                SizedBox(height: 4),
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: AppColors.greenUplace,
+                    color: messageModel.isUser
+                        ? AppColors.lightblueUplace
+                        : AppColors.greenUplace,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    message,
+                    messageModel.message,
                     style: const TextStyle(color: Colors.black),
                   ),
                 ),
               ],
             ),
           ),
+          if (messageModel.isUser) const SizedBox(width: 8),
+          if (messageModel.isUser)
+            const CircleAvatar(
+              backgroundImage: NetworkImage(
+                  'https://images.pexels.com/photos/12842333/pexels-photo-12842333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+            ),
         ],
       ),
     );
