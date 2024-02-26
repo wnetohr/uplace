@@ -59,8 +59,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: false,
                 decoration: const InputDecoration(
                     filled: true,
-                    fillColor: AppColors.greenUplace,
-                    border: OutlineInputBorder(),
+                    fillColor: AppColors.whiteUplace,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                     labelText: 'Insira seu nome'),
               ),
               const SizedBox(
@@ -76,13 +76,13 @@ class _RegisterPageState extends State<RegisterPage> {
                 decoration: _isEmailValid
                     ? const InputDecoration(
                         filled: true,
-                        fillColor: AppColors.greenUplace,
-                        border: OutlineInputBorder(),
+                        fillColor: AppColors.whiteUplace,
+                        border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                         labelText: 'Insira seu e-mail')
                     : const InputDecoration(
                         filled: true,
-                        fillColor: Colors.red,
-                        border: OutlineInputBorder(),
+                        fillColor: Color.fromARGB(255, 252, 155, 148),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                         labelText: 'Digite um e-mail válido'),
                 keyboardType: TextInputType.emailAddress,
                 onChanged: (value) {
@@ -104,13 +104,13 @@ class _RegisterPageState extends State<RegisterPage> {
                 decoration: _isPasswordValid
                     ? const InputDecoration(
                         filled: true,
-                        fillColor: AppColors.greenUplace,
-                        border: OutlineInputBorder(),
+                        fillColor: AppColors.whiteUplace,
+                        border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                         labelText: 'Insira sua senha')
                     : const InputDecoration(
                         filled: true,
-                        fillColor: Colors.red,
-                        border: OutlineInputBorder(),
+                        fillColor: Color.fromARGB(255, 252, 155, 148),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                         labelText: 'A senha deve ter mais de 8 digitos'),
                 onChanged: (value) {
                   setState(() {
@@ -130,8 +130,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: true,
                 decoration: const InputDecoration(
                     filled: true,
-                    fillColor: AppColors.greenUplace,
-                    border: OutlineInputBorder(),
+                    fillColor: AppColors.whiteUplace,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                     labelText: 'Insira sua senha novamente'),
               ),
               const SizedBox(
@@ -159,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       'Criar conta',
                       style: TextStyle(
                         color:
-                            AppColors.lightblueUplace, // Cor do texto 'Entrar'
+                            AppColors.greenUplace, // Cor do texto 'Entrar'
                         fontSize: 28, // Ajusta o tamanho do texto
                       ),
                     ),
