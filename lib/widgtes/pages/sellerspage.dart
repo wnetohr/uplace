@@ -94,7 +94,7 @@ class _SellersPageState extends State<SellersPage> {
                           'https://images.pexels.com/photos/867452/pexels-photo-867452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
                     },
                     child: SellersProducts(
-                        productName: 'Dunots',
+                        productName: 'Donuts',
                         productPrice: 5.50,
                         productDesc:
                             'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
@@ -124,7 +124,9 @@ class _SellersPageState extends State<SellersPage> {
           )),
           ShoppingCartBar(
             itemCount: 3,
-            onPressed: () {},
+            onPressed: () {
+              RoutesFunctions.gotoChatPage(context);
+            },
           )
         ],
       ),

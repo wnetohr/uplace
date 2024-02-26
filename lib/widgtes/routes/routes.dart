@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/widgtes/pages/chatpage.dart';
 import 'package:uplace/widgtes/pages/favoritespage.dart';
 import 'package:uplace/widgtes/pages/homepage.dart';
 import 'package:uplace/widgtes/pages/loginpage.dart';
@@ -85,12 +86,18 @@ class RoutesFunctions {
     );
   }
 
-  // CÓDIGO APENAS PARA TESTAR A configspage VISTO QUE A DE USUÁRIO VAI
-  // CONTER A MESMA, DEPOIS SERÁ ALTERADO
   static void gotoSettingsPage(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => SettingsPage()),
     );
   }
+
+static void gotoChatPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ChatPage()),
+    );
+  }
+
 }
