@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:uplace/widgtes/components/sellers_products.dart';
 import 'package:uplace/widgtes/components/sellersbanner.dart';
 import 'package:uplace/widgtes/components/shopping_cart.dart';
+import 'package:uplace/widgtes/pages/product_to_cart.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 
 class SellersPage extends StatefulWidget {
-  const SellersPage({super.key});
+  SellersPage({super.key});
 
   @override
   State<SellersPage> createState() => _SellersPageState();
 }
 
 class _SellersPageState extends State<SellersPage> {
+  double _counter = 0.0;
+
+  void counterIncrement(double value) {
+    setState(() {
+      _counter += value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,13 +43,22 @@ class _SellersPageState extends State<SellersPage> {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      RoutesFunctions.gotoAddToCart(
-                          context,
-                          'Brigadeiro',
-                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
-                          4.50,
-                          'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+                    onTap: () async {
+                      final double countValue = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(
+                              productName: 'Brigadeiro',
+                              description:
+                                  'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                              price: 4.50,
+                              imageLink:
+                                  'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                        ),
+                      );
+                      if (countValue != null){
+                        counterIncrement(countValue);
+                      }
                     },
                     child: SellersProducts(
                         productName: 'Brigadeiro',
@@ -51,13 +69,22 @@ class _SellersPageState extends State<SellersPage> {
                             'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      RoutesFunctions.gotoAddToCart(
-                          context,
-                          'Cupcake de Chocolate',
-                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
-                          7.00,
-                          'https://images.pexels.com/photos/913136/pexels-photo-913136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+                    onTap: () async {
+                      final double countValue = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(
+                              productName: 'Cupcake de Chocolate',
+                              description:
+                                  'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                              price: 7.00,
+                              imageLink:
+                                  'https://images.pexels.com/photos/913136/pexels-photo-913136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                        ),
+                      );
+                      if (countValue != null){
+                        counterIncrement(countValue);
+                      }
                     },
                     child: SellersProducts(
                         productName: 'Cupcake de Chocolate',
@@ -68,13 +95,22 @@ class _SellersPageState extends State<SellersPage> {
                             'https://images.pexels.com/photos/913136/pexels-photo-913136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      RoutesFunctions.gotoAddToCart(
-                          context,
-                          'Cupcake de Morango',
-                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
-                          7.50,
-                          'https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+                    onTap: () async {
+                      final double countValue = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(
+                              productName: 'Cupcake de Morango',
+                              description:
+                                  'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                              price: 7.50,
+                              imageLink:
+                                  'https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                        ),
+                      );
+                      if (countValue != null){
+                        counterIncrement(countValue);
+                      }
                     },
                     child: SellersProducts(
                         productName: 'Cupcake de Morango',
@@ -85,13 +121,22 @@ class _SellersPageState extends State<SellersPage> {
                             'https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      RoutesFunctions.gotoAddToCart(
-                          context,
-                          'Dunots',
-                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
-                          5.50,
-                          'https://images.pexels.com/photos/867452/pexels-photo-867452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+                    onTap: () async {
+                      final double countValue = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(
+                              productName: 'Dunots',
+                              description:
+                                  'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                              price: 5.50,
+                              imageLink:
+                                  'https://images.pexels.com/photos/867452/pexels-photo-867452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                        ),
+                      );
+                      if (countValue != null){
+                        counterIncrement(countValue);
+                      }
                     },
                     child: SellersProducts(
                         productName: 'Donuts',
@@ -102,13 +147,22 @@ class _SellersPageState extends State<SellersPage> {
                             'https://images.pexels.com/photos/867452/pexels-photo-867452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      RoutesFunctions.gotoAddToCart(
-                          context,
-                          'Bolo floresta negra',
-                          'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
-                          8.50,
-                          'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+                    onTap: () async {
+                      final double countValue = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(
+                              productName: 'Bolo floresta negra',
+                              description:
+                                  'Brigadeiro de chocolate a base de leite, achocolatado e leite condensado',
+                              price: 8.50,
+                              imageLink:
+                                  'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                        ),
+                      );
+                      if (countValue != null){
+                        counterIncrement(countValue);
+                      }
                     },
                     child: SellersProducts(
                         productName: 'Bolo floresta negra',
@@ -123,7 +177,8 @@ class _SellersPageState extends State<SellersPage> {
             ),
           )),
           ShoppingCartBar(
-            itemCount: 3,
+
+            itemCount: _counter,
             onPressed: () {
               RoutesFunctions.gotoChatPage(context);
             },

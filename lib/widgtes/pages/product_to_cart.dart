@@ -44,7 +44,7 @@ class _ProductScreenState extends State<ProductScreen> {
   }
 
   void addToCart() {
-    Navigator.pop(context);
+    Navigator.pop(context,total);
   }
 
   @override
@@ -132,7 +132,9 @@ class _ProductScreenState extends State<ProductScreen> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(AppColors.blueUplace),
                 ),
-                onPressed: addToCart,
+                onPressed: (){
+                  Navigator.pop(context,total);
+                },
                 child: Text('Adicionar ao Carrinho',
                     style: TextStyle(
                       color: AppColors.greenUplace,
