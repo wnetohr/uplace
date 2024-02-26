@@ -37,15 +37,19 @@ class SellersBanner extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text(
-                            '$sellerName',
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                fontSize: 24,
-                                decoration: TextDecoration.none,
-                                color: AppColors.greenUplace),
+                        Container(
+                          height: 50,
+                          width: 250,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              '$sellerName',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  decoration: TextDecoration.none,
+                                  color: AppColors.greenUplace),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -65,8 +69,8 @@ class SellersBanner extends StatelessWidget {
                       width: 20,
                     ),
                     Container(
-                      height: 100,
-                      width: 100,
+                      height: 80,
+                      width: 80,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
                         color: Colors.white,
