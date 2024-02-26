@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/controller/implementations/sellerController.dart';
+import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/components/navigation_bar.dart';
-import 'package:uplace/widgtes/components/product_card.dart';
+import 'package:uplace/widgtes/components/item_card.dart';
+import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 import 'package:uplace/widgtes/components/ImageCarousel.dart';
@@ -15,22 +18,20 @@ class ServicePage extends StatefulWidget {
 }
 
 class _ServicePageState extends State<ServicePage> {
+  final SellerController _sellerController = SellerController();
+  late List<Seller> sellers;
+
+  @override
+  void initState() {
+    super.initState();
+    _sellerController.addContext(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: AppColors.blueUplace,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         leading: Container(),
         title: Center(
             child: Text(
@@ -117,22 +118,31 @@ class _ServicePageState extends State<ServicePage> {
               'https://images.pexels.com/photos/1058461/pexels-photo-1058461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
             ]),
           ),
-          const Expanded(
+          Expanded(
             flex: 6,
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
+                  FutureBuilder<List<Seller>?>(
+                      future: getServiceCards(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          List<Seller> sellers = snapshot.data!;
+                          return Column(
+                            children: List.generate(
+                              sellers.length,
+                              (index) {
+                                return ItemCard(seller: sellers[index]);
+                              },
+                            ),
+                          );
+                        } else if (snapshot.hasError) {
+                          // TODO: Adicionar indicacao de erro
+                          print('${snapshot.error}');
+                        }
+                        return CircularProgressIndicator();
+                      }),
                 ],
               ),
             ),
@@ -141,5 +151,16 @@ class _ServicePageState extends State<ServicePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
       bottomNavigationBar: const NavigationUplaceBar(),
     );
+  }
+
+  Future<List<Seller>?> getServiceCards() async {
+    var response = await _sellerController.getServiceCards();
+    if (response.isValid) {
+      sellers = response.data as List<Seller>;
+      return sellers;
+    } else {
+      ErrorAlert(context, errorMessage: response.error);
+      return null;
+    }
   }
 }

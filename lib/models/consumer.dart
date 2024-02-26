@@ -30,6 +30,6 @@ class Consumer {
         'birthDate: $birthDate, '
         'email: $email, '
         'authId: $authId) '
-        'createdOn: $createdOn,';
+        'createdOn: $createdOn';
   }
 }

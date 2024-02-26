@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/controller/implementations/sellerController.dart';
+import 'package:uplace/models/seller.dart';
+import 'package:uplace/repository/interfaces/item.dart';
 import 'package:uplace/widgtes/components/ImageCarousel.dart';
 import 'package:uplace/widgtes/components/category_menu.dart';
 import 'package:uplace/widgtes/components/navigation_bar.dart';
-import 'package:uplace/widgtes/components/product_card.dart';
+import 'package:uplace/widgtes/components/item_card.dart';
+import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
@@ -16,6 +20,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final SellerController _sellerController = SellerController();
+  late List<Seller> sellers;
+
+  @override
+  void initState() {
+    super.initState();
+    _sellerController.addContext(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,33 +67,25 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    child: ProductCard(),
-                    onPressed: () {
-                      // Adicione a lógica desejada quando o botão for pressionado
-                      RoutesFunctions.gotoSellerPage(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      //backgroundColor: Colors.transparent, // Cor de fundo transparente
-                      elevation: 0.0,
-                      padding: EdgeInsets
-                          .zero, // Remove o preenchimento padrão do botão
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            8.0), // Bordas arredondadas do botão
-                      ),
-                    ),
-                  ),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
+                  FutureBuilder<List<Seller>?>(
+                      future: getFoodsCards(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          List<Seller> sellers = snapshot.data!;
+                          return Column(
+                            children: List.generate(
+                              sellers.length,
+                              (index) {
+                                return ItemCard(seller: sellers[index]);
+                              },
+                            ),
+                          );
+                        } else if (snapshot.hasError) {
+                          // TODO: Adicionar indicacao de erro
+                          print('${snapshot.error}');
+                        }
+                        return CircularProgressIndicator();
+                      }),
                 ],
               ),
             ),
@@ -91,5 +96,16 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar:
           const NavigationUplaceBar(), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Future<List<Seller>?> getFoodsCards() async {
+    var response = await _sellerController.getFoodCards();
+    if (response.isValid) {
+      sellers = response.data as List<Seller>;
+      return sellers;
+    } else {
+      ErrorAlert(context, errorMessage: response.error);
+      return null;
+    }
   }
 }
