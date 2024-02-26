@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 void main() {
