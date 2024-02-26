@@ -33,7 +33,7 @@ class ChatPage extends StatelessWidget {
               const Text(
                 'Doces do Edu',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.greenUplace,
                 ),
               ),
             ],
@@ -64,9 +64,12 @@ class ChatScreen extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.attach_file),
+                icon: const Icon(
+                  Icons.message_rounded, // Substituí o ícone por 'message_rounded'
+                  color: AppColors.blueUplace, // Definindo a cor do ícone como azul
+                ),
                 onPressed: () {
-                  // Implementar ação para anexar arquivo
+                  // Implementar ação para finalizar negociação
                 },
               ),
               const Expanded(
@@ -77,7 +80,10 @@ class ChatScreen extends StatelessWidget {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.send),
+                icon: const Icon(
+                  Icons.send,
+                  color: AppColors.blueUplace,
+                ),
                 onPressed: () {
                   // Implementar ação para enviar mensagem
                 },
@@ -115,12 +121,12 @@ class ChatMessage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: AppColors.blueUplace,
+                    color: AppColors.greenUplace,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     message,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.black),
                   ),
                 ),
               ],
