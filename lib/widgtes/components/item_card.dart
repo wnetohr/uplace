@@ -3,11 +3,23 @@ import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
-class ItemCard extends StatelessWidget {
+class ItemCard extends StatefulWidget {
   Seller? seller;
 
   ItemCard({super.key, required this.seller});
 
+  @override
+  State<ItemCard> createState() => _ItemCardState();
+}
+
+class _ItemCardState extends State<ItemCard> {
+  bool isFavorite = false;
+
+  void toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     var row = Row(
@@ -33,12 +45,12 @@ class ItemCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          seller?.shopName ?? "Vendendor",
+                          widget.seller?.shopName ?? "Vendendor",
                           style: const TextStyle(
                               fontSize: 18.0, color: AppColors.greenUplace),
                         ),
                         Text(
-                          seller?.shopDescription ?? "Descricao",
+                          widget.seller?.shopDescription ?? "Descricao",
                           style: const TextStyle(
                               fontSize: 12.0, color: AppColors.greenUplace),
                         ),
@@ -49,9 +61,15 @@ class ItemCard extends StatelessWidget {
           ),
         ),
         IconButton(
-            onPressed: () {},
-            icon: const Icon(
+            onPressed: () {
+              toggleFavorite();
+            },
+            icon: isFavorite ? const Icon(
               Icons.favorite,
+              size: 40,
+              color: AppColors.lightblueUplace,
+            ) : const Icon(
+              Icons.favorite_border_outlined,
               size: 40,
               color: AppColors.lightblueUplace,
             ))
