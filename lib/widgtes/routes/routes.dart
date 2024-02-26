@@ -81,7 +81,7 @@ class RoutesFunctions {
   static void gotoSellerPage(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const SellersPage()),
+      MaterialPageRoute(builder: (context) => SellersPage()),
     );
   }
 

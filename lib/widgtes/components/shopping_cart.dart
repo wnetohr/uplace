@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class ShoppingCartBar extends StatelessWidget {
-  final int itemCount;
+  final double itemCount;
   final VoidCallback onPressed;
 
   const ShoppingCartBar({
