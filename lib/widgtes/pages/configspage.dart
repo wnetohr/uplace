@@ -69,9 +69,6 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  RoutesFunctions.gotoConfirmPurchasePage(context);
-                  // Implement the 'Notificações' button action
-                  // ROTA DA PÁGINA DE CONFIRMAÇÃO DE COMPRA APENAS PARA TESTE
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
