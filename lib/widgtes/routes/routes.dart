@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/pages/chatpage.dart';
+import 'package:uplace/widgtes/pages/confirmpurchase.dart';
 import 'package:uplace/widgtes/pages/favoritespage.dart';
 import 'package:uplace/widgtes/pages/homepage.dart';
 import 'package:uplace/widgtes/pages/loginpage.dart';
@@ -100,4 +101,12 @@ class RoutesFunctions {
       MaterialPageRoute(builder: (context) => ChatPage()),
     );
   }
+
+ static void gotoConfirmPurchasePage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ConfirmPurchasePage()),
+    );
+  }
+
 }

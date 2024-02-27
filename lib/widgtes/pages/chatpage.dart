@@ -24,13 +24,14 @@ class ChatPage extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
+              const SizedBox(width: 16),
               const CircleAvatar(
                 backgroundImage: NetworkImage(
                     'https://images.pexels.com/photos/247899/pexels-photo-247899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 16),
               const Text(
-                'Doces do Edu',
+                'Doces do Jão',
                 style: TextStyle(
                   color: AppColors.greenUplace,
                 ),
