@@ -64,33 +64,33 @@ class _ProductPageState extends State<ProductPage> {
                       'Alimentos',
                       style: TextStyle(
                         fontSize: 15.0, // Tamanho do texto
-                        fontWeight: FontWeight.bold, // Peso da fonte
                         color: Colors.black, // Cor do texto
                       ),
                     ),
                   ),
                 ),
                 Expanded(
-                  child: DecoratedBox(
-                      decoration: const UnderlineTabIndicator(
+                  child: TextButton(
+                    onPressed: () {
+                      RoutesFunctions.gotoProductPage(context);
+                    },
+                    child: const DecoratedBox(
+                      decoration: UnderlineTabIndicator(
                         borderSide: BorderSide(
                           color: AppColors.blueUplace, // Cor do sublinhado
                           width: 2.0, // Largura do sublinhado
                         ),
                       ),
-                      child: TextButton(
-                        onPressed: () {
-                          RoutesFunctions.gotoProductPage(context);
-                        },
-                        child: const Text(
-                          'Produtos',
-                          style: TextStyle(
-                            fontSize: 15.0, // Tamanho do texto
-                            fontWeight: FontWeight.bold, // Peso da fonte
-                            color: AppColors.blueUplace, // Cor do texto
-                          ),
+                      child: Text(
+                        'Produtos',
+                        style: TextStyle(
+                          fontSize: 15.0, // Tamanho do texto
+                          fontWeight: FontWeight.bold, // Peso da fonte
+                          color: AppColors.blueUplace, // Cor do texto
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                 ),
                 Expanded(
                     child: TextButton(

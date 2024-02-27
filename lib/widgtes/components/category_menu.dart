@@ -48,7 +48,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
               child: Text(
                 'Produtos',
                 style: TextStyle(
-                  fontSize: 15.0, // Tamanho do text // Peso da fonte
+                  fontSize: 15.0, // Tamanho do text 
                   color: Colors.black, // Cor do texto
                 ),
               ),
@@ -62,7 +62,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
             child: Text(
               'Serviços',
               style: TextStyle(
-                fontSize: 15.0, // Tamanho do text // Peso da fonte
+                fontSize: 15.0, // Tamanho do text 
                 color: Colors.black, // Cor do texto
               ),
             ),
