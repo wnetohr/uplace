@@ -1,8 +1,9 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class ShoppingCartBar extends StatelessWidget {
-  final double itemCount;
+  final Decimal itemCount;
   final VoidCallback onPressed;
 
   const ShoppingCartBar({

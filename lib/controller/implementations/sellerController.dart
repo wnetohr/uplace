@@ -30,4 +30,12 @@ class SellerController extends BaseController {
     }
     return awnser(await _sellerService.getServiceCards());
   }
+
+  Future<Response> getSellerItems(String sellerId) async {
+    var validate = await validateLogedUser();
+    if (!validate) {
+      return awnser(null);
+    }
+    return awnser(await _sellerService.getSellerItems(sellerId));
+  }
 }

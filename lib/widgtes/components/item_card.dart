@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:uplace/models/seller.dart';
+import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class ItemCard extends StatelessWidget {
-  Seller? seller;
+  final Seller? seller;
 
   ItemCard({super.key, required this.seller});
 
@@ -60,8 +61,11 @@ class ItemCard extends StatelessWidget {
 
     return ElevatedButton(
       onPressed: () {
-        // Adicione a lógica desejada quando o botão for pressionado
-        RoutesFunctions.gotoSellerPage(context);
+        if (seller == null) {
+          ErrorAlert(context, errorMessage: "Erro ao obter loja do vendedor");
+          return;
+        }
+        RoutesFunctions.gotoSellerPage(context, seller!);
       },
       style: ElevatedButton.styleFrom(
         //backgroundColor: Colors.transparent, // Cor de fundo transparente
