@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:uplace/controller/implementations/consumerController.dart';
 import 'package:uplace/models/consumer.dart';
@@ -48,9 +49,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(
                     width: 50,
                   ),
-                  Text(
+                  AutoSizeText(
                     userName,
-                    style: const TextStyle(fontSize: 34, color: Colors.white),
+                    minFontSize: 24,
+                    maxFontSize: 32,
+                    maxLines: 1,
+                    style: const TextStyle(color: Colors.white),
                   )
                 ],
               ),
