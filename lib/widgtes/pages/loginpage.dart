@@ -42,7 +42,8 @@ class _LoginPageState extends State<LoginPage> {
                   height: 30,
                 ),
                 const CircleAvatar(
-                  child: Icon(Icons.person, size: 150, color: AppColors.whiteUplace),
+                  child: Icon(Icons.person,
+                      size: 150, color: AppColors.whiteUplace),
                   radius: 90.0,
                   backgroundColor: AppColors.blueUplace,
                 ),
@@ -56,7 +57,8 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
                       labelText: 'Insira seu endereço de e-mail'),
                 ),
                 const SizedBox(
@@ -69,7 +71,8 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
                       labelText: 'Insira sua senha'),
                 ),
                 const SizedBox(
@@ -120,8 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           'Entrar',
                           style: TextStyle(
-                            color: AppColors
-                                .greenUplace, // 'Log in' text color
+                            color: AppColors.greenUplace, // 'Log in' text color
                             fontSize: 28, // Adjust text size
                           ),
                         ),
@@ -146,40 +148,95 @@ class _LoginPageState extends State<LoginPage> {
                   direction: Axis.horizontal,
                   children: [
                     Expanded(
-                        child: IconButton(
-                      icon: const FaIcon(
-                        FontAwesomeIcons.google,
-                        size: 40,
-                        color: Colors.red,
+                      child: IconButton(
+                        icon: const FaIcon(
+                          FontAwesomeIcons.google,
+                          size: 40,
+                          color: Colors.red,
+                        ),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Aviso"),
+                                content:
+                                    Text("Função ainda em desenvolvimento"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("Fechar"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                       ),
-                      onPressed: () {
-                        // Add logic for Google login
-                      },
-                    )),
+                    ),
                     Expanded(
-                        child: IconButton(
-                      icon: const Icon(
-                        Icons.facebook,
-                        size: 50,
-                        color: Colors.blue,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.facebook,
+                          size: 50,
+                          color: Colors.blue,
+                        ),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Aviso"),
+                                content:
+                                    Text("Função ainda em desenvolvimento"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("Fechar"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                       ),
-                      onPressed: () {
-                        // Add logic for Facebook login
-                      },
-                    )),
+                    ),
                     Expanded(
-                        child: IconButton(
-                      icon: const FaIcon(
-                        FontAwesomeIcons.xTwitter,
-                        size: 40,
-                        color: Colors.black,
+                      child: IconButton(
+                        icon: const FaIcon(
+                          FontAwesomeIcons.xTwitter,
+                          size: 40,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Aviso"),
+                                content:
+                                    Text("Função ainda em desenvolvimento"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("Fechar"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                       ),
-                      onPressed: () {
-                        // Add logic for Twitter login
-                      },
-                    ))
+                    )
                   ],
                 ),
+
                 const SizedBox(
                   height: 5,
                 ),
