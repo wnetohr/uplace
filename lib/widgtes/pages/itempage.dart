@@ -1,50 +1,45 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import 'package:uplace/models/item.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
-class ProductScreen extends StatefulWidget {
-  final String productName;
-  final String description;
-  final double price;
+class ItemPage extends StatefulWidget {
+  final Item item;
   final String imageLink;
 
-  const ProductScreen(
-      {Key? key,
-      required this.productName,
-      required this.description,
-      required this.price,
-      required this.imageLink})
+  const ItemPage({Key? key, required this.item, required this.imageLink})
       : super(key: key);
 
   @override
-  _ProductScreenState createState() => _ProductScreenState();
+  _ItemPageState createState() => _ItemPageState();
 }
 
-class _ProductScreenState extends State<ProductScreen> {
-  int quantity = 1;
-  double total = 0.0;
+class _ItemPageState extends State<ItemPage> {
+  Decimal quantity = Decimal.fromInt(1);
+  Decimal total = Decimal.fromInt(0);
 
   @override
   void initState() {
     super.initState();
-    total = widget.price * quantity;
+    total = widget.item.price * quantity;
   }
 
   void increaseQuantity() {
     setState(() {
-      quantity++;
-      total = widget.price * quantity;
+      quantity += Decimal.fromInt(1);
+      total = widget.item.price * quantity;
     });
   }
 
   void decreaseQuantity() {
     setState(() {
-      quantity--;
-      total = widget.price * quantity;
+      quantity -= Decimal.fromInt(1);
+      total = widget.item.price * quantity;
     });
   }
 
   void addToCart() {
-    Navigator.pop(context,total);
+    Navigator.pop(context, total);
   }
 
   @override
@@ -79,7 +74,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 ),
               ),
               Text(
-                widget.productName,
+                widget.item.name,
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.bold,
@@ -87,7 +82,7 @@ class _ProductScreenState extends State<ProductScreen> {
               ),
               SizedBox(height: 8.0),
               Text(
-                widget.description,
+                widget.item.description,
                 style: TextStyle(
                   fontSize: 16.0,
                 ),
@@ -101,7 +96,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     style: TextStyle(fontSize: 18.0),
                   ),
                   Visibility(
-                    visible: quantity > 1,
+                    visible: quantity > Decimal.fromInt(1),
                     child: ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
@@ -132,8 +127,8 @@ class _ProductScreenState extends State<ProductScreen> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(AppColors.blueUplace),
                 ),
-                onPressed: (){
-                  Navigator.pop(context,total);
+                onPressed: () {
+                  Navigator.pop(context, total);
                 },
                 child: Text('Adicionar ao Carrinho',
                     style: TextStyle(

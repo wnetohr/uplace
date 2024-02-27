@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:uplace/models/item.dart';
 import 'package:uplace/models/seller.dart';
 import 'package:uplace/repository/interfaces/sellerRepositoryInterface.dart';
 
@@ -33,6 +34,7 @@ class SellerFSRepository extends SellerRepositoryInterface {
         Seller.FromFirebase(doc.data()! as Map<String, dynamic>, doc.id),
       ),
     );
+
     return sellers;
   }
 
@@ -48,6 +50,7 @@ class SellerFSRepository extends SellerRepositoryInterface {
         Seller.FromFirebase(doc.data()! as Map<String, dynamic>, doc.id),
       ),
     );
+
     return sellers;
   }
 
@@ -60,9 +63,23 @@ class SellerFSRepository extends SellerRepositoryInterface {
     List<Seller> sellers = [];
     sellersDocs.docs.forEach(
       (doc) => sellers.add(
-        Seller.FromFirebase(doc.data()! as Map<String, dynamic>, doc.id),
+        Seller.FromFirebase(doc.data() as Map<String, dynamic>, doc.id),
       ),
     );
+
     return sellers;
+  }
+
+  @override
+  Future<List<Item>?> getSellerItems(String sellerId) async {
+    var sellerItemsDocs = await db.doc(sellerId).collection("items").get();
+    List<Item> sellerItems = [];
+    sellerItemsDocs.docs.forEach(
+      (doc) => sellerItems.add(
+        Item.FromFirebase(doc.data(), doc.id),
+      ),
+    );
+
+    return sellerItems;
   }
 }

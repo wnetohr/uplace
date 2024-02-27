@@ -136,11 +136,14 @@ class _ProductPageState extends State<ProductPage> {
                               },
                             ),
                           );
+                        } else if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return CircularProgressIndicator();
                         } else if (snapshot.hasError) {
                           // TODO: Adicionar indicacao de erro
                           print('${snapshot.error}');
                         }
-                        return CircularProgressIndicator();
+                        return SizedBox();
                       }),
                 ],
               ),
