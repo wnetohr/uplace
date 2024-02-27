@@ -1,4 +1,5 @@
 import 'package:uplace/application/services/interfaces/baseService.dart';
+import 'package:uplace/models/item.dart';
 import 'package:uplace/models/seller.dart';
 import 'package:uplace/repository/implementations/firestore/sellerFSRepository.dart';
 import 'package:uplace/repository/interfaces/sellerRepositoryInterface.dart';
@@ -36,5 +37,15 @@ class SellerService extends BaseService {
     }
 
     return sellers;
+  }
+
+  Future<List<Item>?> getSellerItems(String sellerId) async {
+    var items = await _sellerRepository.getSellerItems(sellerId);
+    if (items == null || items.isEmpty) {
+      setError("Não foi possível obter os itens do vendendor");
+      return null;
+    }
+
+    return items;
   }
 }

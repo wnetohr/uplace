@@ -21,7 +21,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final SellerController _sellerController = SellerController();
-  late List<Seller> sellers;
 
   @override
   void initState() {
@@ -101,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<List<Seller>?> getFoodsCards() async {
     var response = await _sellerController.getFoodCards();
     if (response.isValid) {
-      sellers = response.data as List<Seller>;
+      var sellers = response.data as List<Seller>;
       return sellers;
     } else {
       ErrorAlert(context, errorMessage: response.error);

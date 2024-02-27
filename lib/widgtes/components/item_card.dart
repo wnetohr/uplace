@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uplace/models/seller.dart';
+import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
@@ -20,6 +21,7 @@ class _ItemCardState extends State<ItemCard> {
       isFavorite = !isFavorite;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     var row = Row(
@@ -64,22 +66,27 @@ class _ItemCardState extends State<ItemCard> {
             onPressed: () {
               toggleFavorite();
             },
-            icon: isFavorite ? const Icon(
-              Icons.favorite,
-              size: 40,
-              color: AppColors.lightblueUplace,
-            ) : const Icon(
-              Icons.favorite_border_outlined,
-              size: 40,
-              color: AppColors.lightblueUplace,
-            ))
+            icon: isFavorite
+                ? const Icon(
+                    Icons.favorite,
+                    size: 40,
+                    color: AppColors.lightblueUplace,
+                  )
+                : const Icon(
+                    Icons.favorite_border_outlined,
+                    size: 40,
+                    color: AppColors.lightblueUplace,
+                  ))
       ],
     );
 
     return ElevatedButton(
       onPressed: () {
-        // Adicione a lógica desejada quando o botão for pressionado
-        RoutesFunctions.gotoSellerPage(context);
+        if (widget.seller == null) {
+          ErrorAlert(context, errorMessage: "Erro ao obter loja do vendedor");
+          return;
+        }
+        RoutesFunctions.gotoSellerPage(context, widget.seller!);
       },
       style: ElevatedButton.styleFrom(
         //backgroundColor: Colors.transparent, // Cor de fundo transparente

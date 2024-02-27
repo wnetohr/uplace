@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:uplace/widgtes/routes/routes.dart';
+import 'package:uplace/models/item.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
-class SellersProducts extends StatelessWidget {
-  final String productName;
-  final String productDesc;
-  final double productPrice;
+class SellersItem extends StatelessWidget {
+  final Item item;
   final String imageLink;
 
-  const SellersProducts(
-      {super.key,
-      required this.productName,
-      required this.productDesc,
-      required this.productPrice,
-      required this.imageLink});
+  const SellersItem({super.key, required this.item, required this.imageLink});
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    String price = productPrice.toStringAsFixed(2);
+    String price = item.price.toStringAsFixed(2);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -49,7 +42,7 @@ class SellersProducts extends StatelessWidget {
                   ),
                 ),
               )),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Flexible(
@@ -58,35 +51,47 @@ class SellersProducts extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Container(
+                    width: 200,
+                    child: Text(
+                      textAlign: TextAlign.start,
+                      item.category.name,
+                      softWrap: true,
+                      style: const TextStyle(
+                          fontSize: 15,
+                          decoration: TextDecoration.none,
+                          color: Colors.white),
+                    ),
+                  ),
                   Text(
                     textAlign: TextAlign.start,
-                    '$productName',
-                    style: TextStyle(
+                    item.name,
+                    style: const TextStyle(
                         fontSize: 20,
                         decoration: TextDecoration.none,
                         color: AppColors.greenUplace),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
                   Text(
                     textAlign: TextAlign.start,
                     'R\$ $price',
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 18,
                         decoration: TextDecoration.none,
                         color: Colors.white),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
                     width: 200,
                     child: Text(
                       textAlign: TextAlign.start,
-                      '$productDesc',
+                      item.description,
                       softWrap: true,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 12,
                           decoration: TextDecoration.none,
                           color: Colors.white),
