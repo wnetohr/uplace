@@ -4,9 +4,8 @@ import 'package:uplace/widgtes/themes/colors.dart';
 
 class SellersItem extends StatelessWidget {
   final Item item;
-  final String imageLink;
 
-  const SellersItem({super.key, required this.item, required this.imageLink});
+  const SellersItem({super.key, required this.item});
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -37,7 +36,7 @@ class SellersItem extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.network(
-                    '$imageLink',
+                    item.itemImage,
                     fit: BoxFit.cover,
                   ),
                 ),

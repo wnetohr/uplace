@@ -20,7 +20,7 @@ class SellersPage extends StatefulWidget {
 }
 
 class _SellersPageState extends State<SellersPage> {
-  SellerController _sellerController = SellerController();
+  final SellerController _sellerController = SellerController();
 
   @override
   void initState() {
@@ -44,12 +44,7 @@ class _SellersPageState extends State<SellersPage> {
         children: [
           Expanded(
               child: SellersBanner(
-            sellerName: widget.seller.shopName,
-            imageLink:
-                'https://images.pexels.com/photos/13330673/pexels-photo-13330673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            imageSeller:
-                'https://images.pexels.com/photos/247899/pexels-photo-247899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            sellerRatting: 4.5,
+            seller: widget.seller,
           )),
           Expanded(
               child: Container(
@@ -67,14 +62,10 @@ class _SellersPageState extends State<SellersPage> {
                             items.length,
                             (index) {
                               return GestureDetector(
-                                onTap: () async {
-                                  navigateToItem(items[index]);
-                                },
-                                child: SellersItem(
-                                    item: items[index],
-                                    imageLink:
-                                        'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                              );
+                                  onTap: () async {
+                                    navigateToItem(items[index]);
+                                  },
+                                  child: SellersItem(item: items[index]));
                             },
                           ),
                         );
@@ -118,10 +109,7 @@ class _SellersPageState extends State<SellersPage> {
     final Decimal? countValue = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ItemPage(
-            item: item,
-            imageLink:
-                'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+        builder: (context) => ItemPage(item: item),
       ),
     );
     if (countValue != null) {

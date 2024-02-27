@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uplace/widgtes/components/navigation_bar.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
-import 'package:uplace/widgtes/components/item_card.dart';
+import 'package:uplace/widgtes/components/seller_card.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -61,7 +61,7 @@ class FavoritesPage extends StatelessWidget {
             child: ListView.builder(
               itemCount: 4, // Number of Product Cards that we want to showcase
               itemBuilder: (context, index) {
-                return ItemCard(
+                return SellerCard(
                     seller: null); // Substitua isso com seu ProductCard
               },
             ),

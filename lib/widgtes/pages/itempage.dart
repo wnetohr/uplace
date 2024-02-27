@@ -5,10 +5,8 @@ import 'package:uplace/widgtes/themes/colors.dart';
 
 class ItemPage extends StatefulWidget {
   final Item item;
-  final String imageLink;
 
-  const ItemPage({Key? key, required this.item, required this.imageLink})
-      : super(key: key);
+  const ItemPage({Key? key, required this.item}) : super(key: key);
 
   @override
   _ItemPageState createState() => _ItemPageState();
@@ -68,7 +66,7 @@ class _ItemPageState extends State<ItemPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.network(
-                    widget.imageLink,
+                    widget.item.itemImage,
                     fit: BoxFit.cover,
                   ),
                 ),
