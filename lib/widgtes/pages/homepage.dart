@@ -4,7 +4,7 @@ import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/components/ImageCarousel.dart';
 import 'package:uplace/widgtes/components/category_menu.dart';
 import 'package:uplace/widgtes/components/navigation_bar.dart';
-import 'package:uplace/widgtes/components/item_card.dart';
+import 'package:uplace/widgtes/components/seller_card.dart';
 import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: List.generate(
                               sellers.length,
                               (index) {
-                                return ItemCard(seller: sellers[index]);
+                                return SellerCard(seller: sellers[index]);
                               },
                             ),
                           );

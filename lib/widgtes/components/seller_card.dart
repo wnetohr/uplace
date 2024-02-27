@@ -4,16 +4,16 @@ import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
-class ItemCard extends StatefulWidget {
+class SellerCard extends StatefulWidget {
   Seller? seller;
 
-  ItemCard({super.key, required this.seller});
+  SellerCard({super.key, required this.seller});
 
   @override
-  State<ItemCard> createState() => _ItemCardState();
+  State<SellerCard> createState() => _SellerCardState();
 }
 
-class _ItemCardState extends State<ItemCard> {
+class _SellerCardState extends State<SellerCard> {
   bool isFavorite = false;
 
   void toggleFavorite() {
@@ -35,11 +35,28 @@ class _ItemCardState extends State<ItemCard> {
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
                   children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      color: AppColors.lightblueUplace,
-                    ),
+                    widget.seller != null
+                        ? Container(
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: Colors.white,
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: Image.network(
+                                widget.seller!.imageSeller,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          )
+                        : Container(
+                            // TODO: aplicar placeholder
+                            width: 50,
+                            height: 50,
+                            color: AppColors.lightblueUplace,
+                          ),
                     const SizedBox(
                       width: 20,
                     ),

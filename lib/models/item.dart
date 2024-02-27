@@ -10,6 +10,8 @@ class Item {
   String description;
   // String subTitle;
   ItemCategory category;
+  String itemImage;
+  bool isItemImageBase64;
 
   Item({
     required this.id,
@@ -19,6 +21,8 @@ class Item {
     required this.price,
     required this.description,
     required this.category,
+    required this.itemImage,
+    required this.isItemImageBase64,
     // required this.subTitle,
   });
 
@@ -39,6 +43,8 @@ class Item {
       price: Decimal.fromJson(json["price"].toString()),
       id: id,
       description: json["description"],
+      itemImage: json["itemImage"],
+      isItemImageBase64: json["isItemImageBase64"],
       category: category,
     );
   }
