@@ -102,10 +102,10 @@ class RoutesFunctions {
     );
   }
 
- static void gotoConfirmPurchasePage(BuildContext context) {
+ static void gotoConfirmPurchasePage(BuildContext context,Seller seller) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const ConfirmPurchasePage()),
+      MaterialPageRoute(builder: (context) => ConfirmPurchasePage(seller: seller,)),
     );
   }
 

@@ -86,7 +86,7 @@ class _SellersPageState extends State<SellersPage> {
           ShoppingCartBar(
             itemCount: _counter,
             onPressed: () {
-              RoutesFunctions.gotoConfirmPurchasePage(context);
+              RoutesFunctions.gotoConfirmPurchasePage(context,widget.seller);
             },
           )
         ],

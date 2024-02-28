@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class ConfirmPurchasePage extends StatefulWidget {
-  const ConfirmPurchasePage({Key? key}) : super(key: key);
-
+  final Seller seller;
+  ConfirmPurchasePage({super.key, required this.seller});
+  
   @override
   _ConfirmPurchasePageState createState() => _ConfirmPurchasePageState();
 }
@@ -50,6 +52,7 @@ class _ConfirmPurchasePageState extends State<ConfirmPurchasePage> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
+              Text(widget.seller.shopName),
               FractionallySizedBox(
                 widthFactor: 0.95,
                 child: Container(
