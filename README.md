@@ -8,5 +8,5 @@ Como auxiliar a comunidade universitária que necessita comercializar produtos e
 
 O Download do nosso app está disponível nestas duas versões:
 
-- [uPlace v1.0](https://docs.flutter.dev/get-started/codelab)
-- [uPlace v1.0 alternativo](https://docs.flutter.dev/cookbook)
+- [uPlace v1.0](https://github.com/wnetohr/uplace/blob/main/app-arm64-v8a-release.apk)
+- [uPlace v1.0 alternativo](https://github.com/wnetohr/uplace/blob/main/app-armeabi-v7a-release.apk)
