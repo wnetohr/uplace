@@ -30,14 +30,6 @@ class _SellersPageState extends State<SellersPage> {
     _sellerController.addContext(context);
   }
 
-  Decimal _counter = Decimal.fromInt(0);
-
-  void counterIncrement(Decimal value) {
-    setState(() {
-      _counter += value;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -88,7 +80,8 @@ class _SellersPageState extends State<SellersPage> {
           ShoppingCartBar(
             itemsToBuy: itemsToBuy,
             onPressed: () {
-              RoutesFunctions.gotoConfirmPurchasePage(context,widget.seller);
+              RoutesFunctions.gotoConfirmPurchasePage(
+                  context, widget.seller, itemsToBuy);
             },
           )
         ],

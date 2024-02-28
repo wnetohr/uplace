@@ -21,11 +21,27 @@ class ItemsToBuy {
     }
   }
 
-  Decimal getTotal() {
+  Decimal get total {
     Decimal total = Decimal.zero;
     for (var selectedItemsEntry in _selectedItems.entries) {
       total += selectedItemsEntry.key.price * selectedItemsEntry.value;
     }
     return total;
+  }
+
+  Decimal getTotalByItem(Item item) {
+    return _selectedItems[item]! * item.price;
+  }
+
+  Decimal getQuantityByItem(Item item) {
+    return _selectedItems[item]!;
+  }
+
+  int getLenght() {
+    return _selectedItems.keys.length;
+  }
+
+  Item getByIndex(int index) {
+    return _selectedItems.keys.toList()[index];
   }
 }

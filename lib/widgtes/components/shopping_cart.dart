@@ -39,7 +39,7 @@ class ShoppingCartBar extends StatelessWidget {
               Icon(Icons.shopping_cart, color: AppColors.greenUplace),
               SizedBox(width: 10.0),
               Text(
-                'Carrinho (${itemsToBuy.getTotal()})',
+                'Carrinho (${itemsToBuy.total})',
                 style: TextStyle(color: AppColors.greenUplace, fontSize: 16.0),
               ),
             ],
