@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class SellersBanner extends StatelessWidget {
-  final String sellerName;
-  final double sellerRatting;
-  final String imageLink;
-  final String imageSeller;
+  final Seller seller;
 
-  const SellersBanner(
-      {super.key,
-      required this.sellerRatting,
-      required this.imageLink,
-      required this.sellerName,
-      required this.imageSeller});
+  const SellersBanner({super.key, required this.seller});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +15,7 @@ class SellersBanner extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          Flexible(flex: 2, child: Image.network('$imageLink')),
+          Flexible(flex: 2, child: Image.network(seller.imageSellerBanner)),
           Flexible(
               flex: 1,
               child: Container(
@@ -43,7 +36,7 @@ class SellersBanner extends StatelessWidget {
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Text(
-                              '$sellerName',
+                              seller.shopName,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontSize: 24,
@@ -57,7 +50,7 @@ class SellersBanner extends StatelessWidget {
                         ),
                         FittedBox(
                             fit: BoxFit.scaleDown,
-                            child: Text('Avaliação: $sellerRatting',
+                            child: Text('Avaliação: ${seller.score}',
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                     fontSize: 18,
@@ -78,7 +71,7 @@ class SellersBanner extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image.network(
-                          '$imageSeller',
+                          seller.imageSeller,
                           fit: BoxFit.cover,
                         ),
                       ),

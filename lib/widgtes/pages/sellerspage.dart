@@ -2,6 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:uplace/controller/implementations/sellerController.dart';
 import 'package:uplace/models/item.dart';
+import 'package:uplace/models/items_to_buy.dart';
 import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/components/sellers_item.dart';
 import 'package:uplace/widgtes/components/sellersbanner.dart';
@@ -20,20 +21,13 @@ class SellersPage extends StatefulWidget {
 }
 
 class _SellersPageState extends State<SellersPage> {
-  SellerController _sellerController = SellerController();
+  final SellerController _sellerController = SellerController();
+  ItemsToBuy itemsToBuy = ItemsToBuy();
 
   @override
   void initState() {
     super.initState();
     _sellerController.addContext(context);
-  }
-
-  Decimal _counter = Decimal.fromInt(0);
-
-  void counterIncrement(Decimal value) {
-    setState(() {
-      _counter += value;
-    });
   }
 
   @override
@@ -44,12 +38,7 @@ class _SellersPageState extends State<SellersPage> {
         children: [
           Expanded(
               child: SellersBanner(
-            sellerName: widget.seller.shopName,
-            imageLink:
-                'https://images.pexels.com/photos/13330673/pexels-photo-13330673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            imageSeller:
-                'https://images.pexels.com/photos/247899/pexels-photo-247899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            sellerRatting: 4.5,
+            seller: widget.seller,
           )),
           Expanded(
               child: Container(
@@ -67,14 +56,10 @@ class _SellersPageState extends State<SellersPage> {
                             items.length,
                             (index) {
                               return GestureDetector(
-                                onTap: () async {
-                                  navigateToItem(items[index]);
-                                },
-                                child: SellersItem(
-                                    item: items[index],
-                                    imageLink:
-                                        'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                              );
+                                  onTap: () async {
+                                    navigateToItem(items[index]);
+                                  },
+                                  child: SellersItem(item: items[index]));
                             },
                           ),
                         );
@@ -93,9 +78,10 @@ class _SellersPageState extends State<SellersPage> {
             ),
           )),
           ShoppingCartBar(
-            itemCount: _counter,
+            itemsToBuy: itemsToBuy,
             onPressed: () {
-              RoutesFunctions.gotoChatPage(context);
+              RoutesFunctions.gotoConfirmPurchasePage(
+                  context, widget.seller, itemsToBuy);
             },
           )
         ],
@@ -115,17 +101,19 @@ class _SellersPageState extends State<SellersPage> {
   }
 
   void navigateToItem(Item item) async {
-    final Decimal? countValue = await Navigator.push(
+    final ItemsToBuy? items = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ItemPage(
-            item: item,
-            imageLink:
-                'https://images.pexels.com/photos/9285196/pexels-photo-9285196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+          item: item,
+          itemsToBuy: itemsToBuy,
+        ),
       ),
     );
-    if (countValue != null) {
-      counterIncrement(countValue);
-    }
+    setState(() {
+      if (items != null) {
+        itemsToBuy = items;
+      }
+    });
   }
 }

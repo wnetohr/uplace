@@ -1,21 +1,23 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import 'package:uplace/models/items_to_buy.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class ShoppingCartBar extends StatelessWidget {
-  final Decimal itemCount;
   final VoidCallback onPressed;
+  final ItemsToBuy itemsToBuy;
 
-  const ShoppingCartBar({
+  ShoppingCartBar({
     Key? key,
-    required this.itemCount,
     required this.onPressed,
+    required this.itemsToBuy,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent, // Tornando o Material transparente
+      color:
+          const Color.fromARGB(0, 55, 0, 0), // Tornando o Material transparente
       child: InkWell(
         onTap: onPressed,
         borderRadius: BorderRadius.only(
@@ -37,7 +39,7 @@ class ShoppingCartBar extends StatelessWidget {
               Icon(Icons.shopping_cart, color: AppColors.greenUplace),
               SizedBox(width: 10.0),
               Text(
-                'Carrinho ($itemCount)',
+                'Carrinho (${itemsToBuy.total})',
                 style: TextStyle(color: AppColors.greenUplace, fontSize: 16.0),
               ),
             ],

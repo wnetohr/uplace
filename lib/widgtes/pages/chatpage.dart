@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
-void main() {
-  runApp(ChatPage());
+class ChatPage extends StatefulWidget {
+  final Seller seller;
+  ChatPage({super.key, required this.seller});
+  @override
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class ChatPage extends StatelessWidget {
+class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,13 +28,13 @@ class ChatPage extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              const CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://images.pexels.com/photos/247899/pexels-photo-247899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+              const SizedBox(width: 16),
+              CircleAvatar(
+                backgroundImage: NetworkImage(widget.seller.imageSeller),
               ),
-              const SizedBox(width: 8),
-              const Text(
-                'Doces do Edu',
+              const SizedBox(width: 16),
+              Text(
+                widget.seller.shopName,
                 style: TextStyle(
                   color: AppColors.greenUplace,
                 ),
@@ -38,13 +42,16 @@ class ChatPage extends StatelessWidget {
             ],
           ),
         ),
-        body: ChatScreen(),
+        body: ChatScreen(seller: widget.seller),
       ),
     );
   }
 }
 
 class ChatScreen extends StatefulWidget {
+  final Seller seller;
+  ChatScreen({super.key, required this.seller});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -76,7 +83,10 @@ class _ChatScreenState extends State<ChatScreen> {
           child: ListView.builder(
             itemCount: _messages.length,
             itemBuilder: (context, index) {
-              return ChatMessage(messageModel: _messages[index]);
+              return ChatMessage(
+                messageModel: _messages[index],
+                seller: widget.seller,
+              );
             },
           ),
         ),
@@ -132,8 +142,9 @@ class ChatMessageModel {
 
 class ChatMessage extends StatelessWidget {
   final ChatMessageModel messageModel;
+  Seller? seller;
 
-  const ChatMessage({required this.messageModel});
+  ChatMessage({required this.messageModel, this.seller});
 
   @override
   Widget build(BuildContext context) {
@@ -146,9 +157,8 @@ class ChatMessage extends StatelessWidget {
             : MainAxisAlignment.start,
         children: [
           if (!messageModel.isUser)
-            const CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://images.pexels.com/photos/247899/pexels-photo-247899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+            CircleAvatar(
+              backgroundImage: NetworkImage(seller!.imageSeller),
             ),
           if (!messageModel.isUser) const SizedBox(width: 8),
           Expanded(

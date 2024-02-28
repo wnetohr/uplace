@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/models/items_to_buy.dart';
 import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/pages/chatpage.dart';
+import 'package:uplace/widgtes/pages/confirmpurchase.dart';
 import 'package:uplace/widgtes/pages/favoritespage.dart';
 import 'package:uplace/widgtes/pages/homepage.dart';
 import 'package:uplace/widgtes/pages/loginpage.dart';
@@ -94,10 +96,26 @@ class RoutesFunctions {
     );
   }
 
-  static void gotoChatPage(BuildContext context) {
+  static void gotoChatPage(BuildContext context, Seller seller) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ChatPage()),
+      MaterialPageRoute(
+          builder: (context) => ChatPage(
+                seller: seller,
+              )),
+    );
+  }
+
+  static void gotoConfirmPurchasePage(
+      BuildContext context, Seller seller, ItemsToBuy itemsToBuy) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ConfirmPurchasePage(
+          seller: seller,
+          itemsToBuy: itemsToBuy,
+        ),
+      ),
     );
   }
 }

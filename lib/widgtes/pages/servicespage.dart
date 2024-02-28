@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uplace/controller/implementations/sellerController.dart';
 import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/components/navigation_bar.dart';
-import 'package:uplace/widgtes/components/item_card.dart';
+import 'package:uplace/widgtes/components/seller_card.dart';
 import 'package:uplace/widgtes/components/utils/error_alert.dart';
 import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
@@ -64,7 +64,6 @@ class _ServicePageState extends State<ServicePage> {
                       'Alimentos',
                       style: TextStyle(
                         fontSize: 15.0, // Tamanho do texto
-                        fontWeight: FontWeight.bold, // Peso da fonte
                         color: Colors.black, // Cor do texto
                       ),
                     ),
@@ -133,7 +132,7 @@ class _ServicePageState extends State<ServicePage> {
                             children: List.generate(
                               sellers.length,
                               (index) {
-                                return ItemCard(seller: sellers[index]);
+                                return SellerCard(seller: sellers[index]);
                               },
                             ),
                           );
