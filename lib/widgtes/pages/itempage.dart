@@ -1,7 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:uplace/models/item.dart';
-import 'package:uplace/models/selected_items.dart';
+import 'package:uplace/models/items_to_buy.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class ItemPage extends StatefulWidget {
@@ -23,24 +23,26 @@ class _ItemPageState extends State<ItemPage> {
   void initState() {
     super.initState();
     total = widget.item.price * quantity;
+    widget.itemsToBuy.increment(widget.item, Decimal.zero);
   }
 
   void increaseQuantity() {
     setState(() {
-      quantity += Decimal.fromInt(1);
+      quantity += Decimal.one;
       total = widget.item.price * quantity;
     });
   }
 
   void decreaseQuantity() {
     setState(() {
-      quantity -= Decimal.fromInt(1);
+      quantity -= Decimal.one;
       total = widget.item.price * quantity;
     });
   }
 
   void addToCart() {
-    Navigator.pop(context, total);
+    widget.itemsToBuy.increment(widget.item, quantity);
+    Navigator.pop(context, widget.itemsToBuy);
   }
 
   @override
@@ -129,7 +131,7 @@ class _ItemPageState extends State<ItemPage> {
                       MaterialStateProperty.all<Color>(AppColors.blueUplace),
                 ),
                 onPressed: () {
-                  Navigator.pop(context, total);
+                  addToCart();
                 },
                 child: Text('Adicionar ao Carrinho',
                     style: TextStyle(

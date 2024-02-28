@@ -2,7 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:uplace/controller/implementations/sellerController.dart';
 import 'package:uplace/models/item.dart';
-import 'package:uplace/models/selected_items.dart';
+import 'package:uplace/models/items_to_buy.dart';
 import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/components/sellers_item.dart';
 import 'package:uplace/widgtes/components/sellersbanner.dart';
@@ -22,7 +22,7 @@ class SellersPage extends StatefulWidget {
 
 class _SellersPageState extends State<SellersPage> {
   final SellerController _sellerController = SellerController();
-  late ItemsToBuy itemsToBuy;
+  ItemsToBuy itemsToBuy = ItemsToBuy();
 
   @override
   void initState() {
@@ -86,7 +86,7 @@ class _SellersPageState extends State<SellersPage> {
             ),
           )),
           ShoppingCartBar(
-            itemCount: _counter,
+            itemsToBuy: itemsToBuy,
             onPressed: () {
               RoutesFunctions.gotoChatPage(context);
             },
@@ -108,7 +108,7 @@ class _SellersPageState extends State<SellersPage> {
   }
 
   void navigateToItem(Item item) async {
-    final Decimal? countValue = await Navigator.push(
+    final ItemsToBuy? items = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ItemPage(
@@ -117,8 +117,10 @@ class _SellersPageState extends State<SellersPage> {
         ),
       ),
     );
-    if (countValue != null) {
-      counterIncrement(countValue);
-    }
+    setState(() {
+      if (items != null) {
+        itemsToBuy = items;
+      }
+    });
   }
 }

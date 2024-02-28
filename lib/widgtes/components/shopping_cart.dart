@@ -1,17 +1,16 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
-import 'package:uplace/models/selected_items.dart';
+import 'package:uplace/models/items_to_buy.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class ShoppingCartBar extends StatelessWidget {
-  final Decimal itemCount;
   final VoidCallback onPressed;
-  late ItemsToBuy itemsToBuy = ItemsToBuy();
+  final ItemsToBuy itemsToBuy;
 
   ShoppingCartBar({
     Key? key,
-    required this.itemCount,
     required this.onPressed,
+    required this.itemsToBuy,
   }) : super(key: key);
 
   @override
@@ -40,7 +39,7 @@ class ShoppingCartBar extends StatelessWidget {
               Icon(Icons.shopping_cart, color: AppColors.greenUplace),
               SizedBox(width: 10.0),
               Text(
-                'Carrinho ($itemCount)',
+                'Carrinho (${itemsToBuy.getTotal()})',
                 style: TextStyle(color: AppColors.greenUplace, fontSize: 16.0),
               ),
             ],
