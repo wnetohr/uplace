@@ -95,10 +95,10 @@ class RoutesFunctions {
     );
   }
 
-  static void gotoChatPage(BuildContext context) {
+  static void gotoChatPage(BuildContext context,Seller seller) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ChatPage()),
+      MaterialPageRoute(builder: (context) => ChatPage(seller: seller,)),
     );
   }
 

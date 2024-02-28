@@ -7,7 +7,7 @@ import 'package:uplace/widgtes/themes/colors.dart';
 class ConfirmPurchasePage extends StatefulWidget {
   final Seller seller;
   ConfirmPurchasePage({super.key, required this.seller});
-  
+
   @override
   _ConfirmPurchasePageState createState() => _ConfirmPurchasePageState();
 }
@@ -21,7 +21,7 @@ class _ConfirmPurchasePageState extends State<ConfirmPurchasePage> {
         appBar: AppBar(
           backgroundColor: AppColors.blueUplace,
           title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
                 children: [
@@ -34,11 +34,13 @@ class _ConfirmPurchasePageState extends State<ConfirmPurchasePage> {
                       Navigator.pop(context);
                     },
                   ),
-                  SizedBox(
-                    width: 30,
+                  const SizedBox(width: 16),
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(widget.seller.imageSeller),
                   ),
-                  const Text(
-                    'Finalizando pedido',
+                  const SizedBox(width: 16),
+                  Text(
+                    widget.seller.shopName,
                     style: TextStyle(
                       color: AppColors.greenUplace,
                     ),
@@ -52,7 +54,6 @@ class _ConfirmPurchasePageState extends State<ConfirmPurchasePage> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              Text(widget.seller.shopName),
               FractionallySizedBox(
                 widthFactor: 0.95,
                 child: Container(
@@ -155,7 +156,7 @@ class _ConfirmPurchasePageState extends State<ConfirmPurchasePage> {
                     flex: 1,
                     child: ElevatedButton(
                       onPressed: () {
-                        RoutesFunctions.gotoChatPage(context);
+                        RoutesFunctions.gotoChatPage(context, widget.seller);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.blueUplace,
