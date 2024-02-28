@@ -39,17 +39,11 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 // User Avatar
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
-                const CircleAvatar(
-                  child: Icon(Icons.person,
-                      size: 150, color: AppColors.whiteUplace),
-                  radius: 90.0,
-                  backgroundColor: AppColors.blueUplace,
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
+                Image(image: AssetImage("lib/assets/uPlace_icon.png"),width: 200,height: 200,),
+                Center(child: Text('uPlace',style: TextStyle(color: AppColors.blueUplace,fontSize: 24),)),
+                SizedBox(height: 20,),
                 // Email Field
                 TextField(
                   controller: _userEmailController,
@@ -133,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 const SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
 
                 // Login Social
