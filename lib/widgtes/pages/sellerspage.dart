@@ -2,6 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:uplace/controller/implementations/sellerController.dart';
 import 'package:uplace/models/item.dart';
+import 'package:uplace/models/items_to_buy.dart';
 import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/components/sellers_item.dart';
 import 'package:uplace/widgtes/components/sellersbanner.dart';
@@ -21,19 +22,12 @@ class SellersPage extends StatefulWidget {
 
 class _SellersPageState extends State<SellersPage> {
   final SellerController _sellerController = SellerController();
+  ItemsToBuy itemsToBuy = ItemsToBuy();
 
   @override
   void initState() {
     super.initState();
     _sellerController.addContext(context);
-  }
-
-  Decimal _counter = Decimal.fromInt(0);
-
-  void counterIncrement(Decimal value) {
-    setState(() {
-      _counter += value;
-    });
   }
 
   @override
@@ -84,9 +78,10 @@ class _SellersPageState extends State<SellersPage> {
             ),
           )),
           ShoppingCartBar(
-            itemCount: _counter,
+            itemsToBuy: itemsToBuy,
             onPressed: () {
-              RoutesFunctions.gotoConfirmPurchasePage(context,widget.seller);
+              RoutesFunctions.gotoConfirmPurchasePage(
+                  context, widget.seller, itemsToBuy);
             },
           )
         ],
@@ -106,14 +101,19 @@ class _SellersPageState extends State<SellersPage> {
   }
 
   void navigateToItem(Item item) async {
-    final Decimal? countValue = await Navigator.push(
+    final ItemsToBuy? items = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ItemPage(item: item),
+        builder: (context) => ItemPage(
+          item: item,
+          itemsToBuy: itemsToBuy,
+        ),
       ),
     );
-    if (countValue != null) {
-      counterIncrement(countValue);
-    }
+    setState(() {
+      if (items != null) {
+        itemsToBuy = items;
+      }
+    });
   }
 }
