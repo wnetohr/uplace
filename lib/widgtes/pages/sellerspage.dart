@@ -2,6 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:uplace/controller/implementations/sellerController.dart';
 import 'package:uplace/models/item.dart';
+import 'package:uplace/models/selected_items.dart';
 import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/components/sellers_item.dart';
 import 'package:uplace/widgtes/components/sellersbanner.dart';
@@ -21,6 +22,7 @@ class SellersPage extends StatefulWidget {
 
 class _SellersPageState extends State<SellersPage> {
   final SellerController _sellerController = SellerController();
+  late ItemsToBuy itemsToBuy;
 
   @override
   void initState() {
@@ -109,7 +111,10 @@ class _SellersPageState extends State<SellersPage> {
     final Decimal? countValue = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ItemPage(item: item),
+        builder: (context) => ItemPage(
+          item: item,
+          itemsToBuy: itemsToBuy,
+        ),
       ),
     );
     if (countValue != null) {

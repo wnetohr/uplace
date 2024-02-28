@@ -1,12 +1,15 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:uplace/models/item.dart';
+import 'package:uplace/models/selected_items.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class ItemPage extends StatefulWidget {
   final Item item;
+  final ItemsToBuy itemsToBuy;
 
-  const ItemPage({Key? key, required this.item}) : super(key: key);
+  const ItemPage({Key? key, required this.item, required this.itemsToBuy})
+      : super(key: key);
 
   @override
   _ItemPageState createState() => _ItemPageState();
