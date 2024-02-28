@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:uplace/models/seller.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
-
-void main() {
-  runApp(ChatPage());
+class ChatPage extends StatefulWidget {
+  final Seller seller;
+  ChatPage({super.key, required this.seller});
+  @override
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class ChatPage extends StatelessWidget {
+class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,13 +27,14 @@ class ChatPage extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              const CircleAvatar(
+              const SizedBox(width: 16),
+              CircleAvatar(
                 backgroundImage: NetworkImage(
-                    'https://images.pexels.com/photos/247899/pexels-photo-247899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                    widget.seller.imageSeller),
               ),
-              const SizedBox(width: 8),
-              const Text(
-                'Doces do Edu',
+              const SizedBox(width: 16),
+              Text(
+                widget.seller.shopName,
                 style: TextStyle(
                   color: AppColors.greenUplace,
                 ),

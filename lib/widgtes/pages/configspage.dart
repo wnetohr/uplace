@@ -69,7 +69,6 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  // Implement the 'Notificações' button action
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor:

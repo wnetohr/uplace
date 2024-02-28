@@ -64,7 +64,6 @@ class _ServicePageState extends State<ServicePage> {
                       'Alimentos',
                       style: TextStyle(
                         fontSize: 15.0, // Tamanho do texto
-                        fontWeight: FontWeight.bold, // Peso da fonte
                         color: Colors.black, // Cor do texto
                       ),
                     ),
