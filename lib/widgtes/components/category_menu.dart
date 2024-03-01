@@ -3,7 +3,10 @@ import 'package:uplace/widgtes/routes/routes.dart';
 import 'package:uplace/widgtes/themes/colors.dart';
 
 class CategoryMenu extends StatefulWidget {
-  const CategoryMenu({super.key});
+
+  // TODO: Will probably need a callback function to change HomePage state
+
+  const CategoryMenu({super.key,});
 
   @override
   State<CategoryMenu> createState() => _CategoryMenuState();
