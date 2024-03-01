@@ -10,6 +10,7 @@ class CategoryMenu extends StatefulWidget {
 }
 
 class _CategoryMenuState extends State<CategoryMenu> {
+  String selectedCategory = "Alimentos";
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -20,53 +21,108 @@ class _CategoryMenuState extends State<CategoryMenu> {
           Expanded(
             child: TextButton(
               onPressed: () {
-                RoutesFunctions.gotoHomePage(context);
+                setState(() {
+                  selectedCategory = "Alimentos";
+                });
+                // RoutesFunctions.gotoHomePage(context);
               },
-              child: const DecoratedBox(
-                decoration: UnderlineTabIndicator(
-                  borderSide: BorderSide(
-                    color: AppColors.blueUplace, // Cor do sublinhado
-                    width: 2.0, // Largura do sublinhado
-                  ),
-                ),
-                child: Text(
-                  'Alimentos',
-                  style: TextStyle(
-                    fontSize: 15.0, // Tamanho do texto
-                    fontWeight: FontWeight.bold, // Peso da fonte
-                    color: AppColors.blueUplace, // Cor do texto
-                  ),
-                ),
-              ),
+              child: selectedCategory == "Alimentos"
+                  ? const DecoratedBox(
+                      decoration: UnderlineTabIndicator(
+                        borderSide: BorderSide(
+                          color: AppColors.blueUplace, // Cor do sublinhado
+                          width: 2.0, // Largura do sublinhado
+                        ),
+                      ),
+                      child: Text(
+                        'Alimentos',
+                        style: TextStyle(
+                          fontSize: 15.0, // Tamanho do texto
+                          fontWeight: FontWeight.bold, // Peso da fonte
+                          color: AppColors.blueUplace, // Cor do texto
+                        ),
+                      ),
+                    )
+                  : const Text(
+                      'Alimentos',
+                      style: TextStyle(
+                        fontSize: 15.0, // Tamanho do texto
+                        fontWeight: FontWeight.normal, // Peso da fonte
+                        color: Colors.black, // Cor do texto
+                      ),
+                    ),
             ),
           ),
           Expanded(
             child: TextButton(
               onPressed: () {
-                RoutesFunctions.gotoProductPage(context);
+                setState(() {
+                  selectedCategory = "Produtos";
+                });
+                // RoutesFunctions.gotoProductPage(context);
               },
-              child: Text(
-                'Produtos',
-                style: TextStyle(
-                  fontSize: 15.0, // Tamanho do text 
-                  color: Colors.black, // Cor do texto
-                ),
-              ),
+              child: selectedCategory == "Produtos"
+                  ? const DecoratedBox(
+                      decoration: UnderlineTabIndicator(
+                        borderSide: BorderSide(
+                          color: AppColors.blueUplace, // Cor do sublinhado
+                          width: 2.0, // Largura do sublinhado
+                        ),
+                      ),
+                      child: Text(
+                        'Produtos',
+                        style: TextStyle(
+                          fontSize: 15.0, // Tamanho do texto
+                          fontWeight: FontWeight.bold, // Peso da fonte
+                          color: AppColors.blueUplace, // Cor do texto
+                        ),
+                      ),
+                    )
+                  : const Text(
+                      'Produtos',
+                      style: TextStyle(
+                        fontSize: 15.0, // Tamanho do texto
+                        fontWeight: FontWeight.normal, // Peso da fonte
+                        color: Colors.black, // Cor do texto
+                      ),
+                    ),
             ),
           ),
           Expanded(
-              child: TextButton(
-            onPressed: () {
-              RoutesFunctions.gotoServicePage(context);
-            },
-            child: Text(
-              'Serviços',
-              style: TextStyle(
-                fontSize: 15.0, // Tamanho do text 
-                color: Colors.black, // Cor do texto
-              ),
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  selectedCategory = "Serviços";
+                });
+                // RoutesFunctions.gotoServicePage(context);
+              },
+              child: selectedCategory == "Serviços"
+                  ? const DecoratedBox(
+                      decoration: UnderlineTabIndicator(
+                        borderSide: BorderSide(
+                          color: AppColors.blueUplace, // Cor do sublinhado
+                          width: 2.0, // Largura do sublinhado
+                        ),
+                      ),
+                      child: Text(
+                        'Serviços',
+                        style: TextStyle(
+                          fontSize: 15.0, // Tamanho do texto
+                          fontWeight: FontWeight.bold, // Peso da fonte
+                          color: AppColors.blueUplace, // Cor do texto
+                        ),
+                      ),
+                    )
+                  : const Text(
+                      'Serviços',
+                      style: TextStyle(
+                        fontSize: 15.0, // Tamanho do texto
+                        fontWeight: FontWeight.normal, // Peso da fonte
+                        color: Colors.black, // Cor do texto
+                      ),
+                    ),
             ),
-          ))
+          )
         ],
       ),
     );
