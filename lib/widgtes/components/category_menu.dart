@@ -19,112 +19,52 @@ class _CategoryMenuState extends State<CategoryMenu> {
         direction: Axis.horizontal,
         children: [
           Expanded(
-            child: TextButton(
-              onPressed: () {
-                setState(() {
-                  selectedCategory = "Alimentos";
-                });
-                // RoutesFunctions.gotoHomePage(context);
-              },
-              child: selectedCategory == "Alimentos"
-                  ? const DecoratedBox(
-                      decoration: UnderlineTabIndicator(
-                        borderSide: BorderSide(
-                          color: AppColors.blueUplace, // Cor do sublinhado
-                          width: 2.0, // Largura do sublinhado
-                        ),
-                      ),
-                      child: Text(
-                        'Alimentos',
-                        style: TextStyle(
-                          fontSize: 15.0, // Tamanho do texto
-                          fontWeight: FontWeight.bold, // Peso da fonte
-                          color: AppColors.blueUplace, // Cor do texto
-                        ),
-                      ),
-                    )
-                  : const Text(
-                      'Alimentos',
-                      style: TextStyle(
-                        fontSize: 15.0, // Tamanho do texto
-                        fontWeight: FontWeight.normal, // Peso da fonte
-                        color: Colors.black, // Cor do texto
-                      ),
-                    ),
-            ),
+            child: categoryMenuTextButton("Alimentos"),
           ),
           Expanded(
-            child: TextButton(
-              onPressed: () {
-                setState(() {
-                  selectedCategory = "Produtos";
-                });
-                // RoutesFunctions.gotoProductPage(context);
-              },
-              child: selectedCategory == "Produtos"
-                  ? const DecoratedBox(
-                      decoration: UnderlineTabIndicator(
-                        borderSide: BorderSide(
-                          color: AppColors.blueUplace, // Cor do sublinhado
-                          width: 2.0, // Largura do sublinhado
-                        ),
-                      ),
-                      child: Text(
-                        'Produtos',
-                        style: TextStyle(
-                          fontSize: 15.0, // Tamanho do texto
-                          fontWeight: FontWeight.bold, // Peso da fonte
-                          color: AppColors.blueUplace, // Cor do texto
-                        ),
-                      ),
-                    )
-                  : const Text(
-                      'Produtos',
-                      style: TextStyle(
-                        fontSize: 15.0, // Tamanho do texto
-                        fontWeight: FontWeight.normal, // Peso da fonte
-                        color: Colors.black, // Cor do texto
-                      ),
-                    ),
-            ),
+            child: categoryMenuTextButton("Produtos"),
           ),
           Expanded(
-            child: TextButton(
-              onPressed: () {
-                setState(() {
-                  selectedCategory = "Serviços";
-                });
-                // RoutesFunctions.gotoServicePage(context);
-              },
-              child: selectedCategory == "Serviços"
-                  ? const DecoratedBox(
-                      decoration: UnderlineTabIndicator(
-                        borderSide: BorderSide(
-                          color: AppColors.blueUplace, // Cor do sublinhado
-                          width: 2.0, // Largura do sublinhado
-                        ),
-                      ),
-                      child: Text(
-                        'Serviços',
-                        style: TextStyle(
-                          fontSize: 15.0, // Tamanho do texto
-                          fontWeight: FontWeight.bold, // Peso da fonte
-                          color: AppColors.blueUplace, // Cor do texto
-                        ),
-                      ),
-                    )
-                  : const Text(
-                      'Serviços',
-                      style: TextStyle(
-                        fontSize: 15.0, // Tamanho do texto
-                        fontWeight: FontWeight.normal, // Peso da fonte
-                        color: Colors.black, // Cor do texto
-                      ),
-                    ),
-            ),
+            child: categoryMenuTextButton("Serviços"),
           )
         ],
       ),
+    );
+  }
+
+  TextButton categoryMenuTextButton(String category) {
+    return TextButton(
+      onPressed: () {
+        setState(() {
+          selectedCategory = category;
+        });
+        // RoutesFunctions.gotoHomePage(context);
+      },
+      child: selectedCategory == category
+          ? DecoratedBox(
+              decoration: const UnderlineTabIndicator(
+                borderSide: BorderSide(
+                  color: AppColors.blueUplace, // Cor do sublinhado
+                  width: 2.0, // Largura do sublinhado
+                ),
+              ),
+              child: Text(
+                category,
+                style: const TextStyle(
+                  fontSize: 15.0, // Tamanho do texto
+                  fontWeight: FontWeight.bold, // Peso da fonte
+                  color: AppColors.blueUplace, // Cor do texto
+                ),
+              ),
+            )
+          : Text(
+              category,
+              style: const TextStyle(
+                fontSize: 15.0, // Tamanho do texto
+                fontWeight: FontWeight.normal, // Peso da fonte
+                color: Colors.black, // Cor do texto
+              ),
+            ),
     );
   }
 }
