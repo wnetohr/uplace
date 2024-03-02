@@ -19,12 +19,41 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final SellerController _sellerController = SellerController();
-  late Future<List<Seller>?> sellerCards = getFoodsCards();
+  late Future<List<Seller>?> sellerCards;
+  late ImageCarousel carousel;
+
+  List<String> get foodImages {
+    return [
+      //Carrossel dos Alimentos
+      'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400',
+      'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=400',
+      'https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=400'
+    ];
+  }
+
+  List<String> get serviceImages {
+    return [
+      //Carrossel dos Serviços
+      'https://media.istockphoto.com/id/1280363533/pt/foto/female-translator-working-on-a-document.jpg?b=1&s=612x612&w=0&k=20&c=_xuKyQ_IIW3WYlvxAUesQngKh-iF2QZ8mT0ioWe0tbc=',
+      'https://media.istockphoto.com/id/491618768/pt/foto/de-línguas-estrangeiras-tradução-conceito-de-tradução-online.jpg?b=1&s=612x612&w=0&k=20&c=R60t0rhS3jPsUyMj-rGPhao__y9twWhqh9zqV7XN1-M=',
+      'https://images.pexels.com/photos/1058461/pexels-photo-1058461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    ];
+  }
+
+  List<String> get productImages {
+    return [
+      //Carrossel dos Produtos
+      'https://images.pexels.com/photos/632470/pexels-photo-632470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/5088021/pexels-photo-5088021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/963276/pexels-photo-963276.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    ];
+  }
 
   @override
   void initState() {
     super.initState();
-    sellerCards;
+    sellerCards = getFoodsCards();
+    carousel = ImageCarousel(images: foodImages);
     _sellerController.addContext(context);
   }
 
@@ -56,26 +85,25 @@ class _MyHomePageState extends State<MyHomePage> {
               switch (category) {
                 case "Alimentos":
                   sellerCards = getFoodsCards();
+                  carousel = ImageCarousel(images: foodImages);
                   break;
                 case "Produtos":
                   sellerCards = getProductCards();
+                  carousel = ImageCarousel(images: productImages);
                   break;
                 case "Serviços":
                   sellerCards = getServiceCards();
+                  carousel = ImageCarousel(images: serviceImages);
                   break;
                 default:
               }
               setState(() {});
             },
           ),
-          const Expanded(
-              flex: 2,
-              child: ImageCarousel(images: [
-                //Carrossel dos Alimentos
-                'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400',
-                'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=400',
-                'https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=400'
-              ])),
+          Expanded(
+            flex: 2,
+            child: carousel,
+          ),
           Expanded(
             flex: 6,
             child: SingleChildScrollView(
