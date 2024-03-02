@@ -19,10 +19,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final SellerController _sellerController = SellerController();
+  late Future<List<Seller>?> sellerCards = getFoodsCards();
 
   @override
   void initState() {
     super.initState();
+    sellerCards;
     _sellerController.addContext(context);
   }
 
@@ -49,7 +51,23 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          const CategoryMenu(),
+          CategoryMenu(
+            onSelectedCategory: (String category) async {
+              switch (category) {
+                case "Alimentos":
+                  sellerCards = getFoodsCards();
+                  break;
+                case "Produtos":
+                  sellerCards = getProductCards();
+                  break;
+                case "Serviços":
+                  sellerCards = getServiceCards();
+                  break;
+                default:
+              }
+              setState(() {});
+            },
+          ),
           const Expanded(
               flex: 2,
               child: ImageCarousel(images: [
@@ -65,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   FutureBuilder<List<Seller>?>(
-                      future: getFoodsCards(),
+                      future: sellerCards,
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           List<Seller> sellers = snapshot.data!;
@@ -97,6 +115,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<List<Seller>?> getFoodsCards() async {
     var response = await _sellerController.getFoodCards();
+    if (response.isValid) {
+      var sellers = response.data as List<Seller>;
+      return sellers;
+    } else {
+      ErrorAlert(context, errorMessage: response.error);
+      return null;
+    }
+  }
+
+  Future<List<Seller>?> getProductCards() async {
+    var response = await _sellerController.getProductCards();
+    if (response.isValid) {
+      var sellers = response.data as List<Seller>;
+      return sellers;
+    } else {
+      ErrorAlert(context, errorMessage: response.error);
+      return null;
+    }
+  }
+
+  Future<List<Seller>?> getServiceCards() async {
+    var response = await _sellerController.getServiceCards();
     if (response.isValid) {
       var sellers = response.data as List<Seller>;
       return sellers;

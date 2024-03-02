@@ -4,9 +4,9 @@ import 'package:uplace/widgtes/themes/colors.dart';
 
 class CategoryMenu extends StatefulWidget {
 
-  // TODO: Will probably need a callback function to change HomePage state
+  final Function(String) onSelectedCategory;
 
-  const CategoryMenu({super.key,});
+  const CategoryMenu({super.key, required this.onSelectedCategory,});
 
   @override
   State<CategoryMenu> createState() => _CategoryMenuState();
@@ -41,6 +41,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
         setState(() {
           selectedCategory = category;
         });
+        widget.onSelectedCategory(category);
         // RoutesFunctions.gotoHomePage(context);
       },
       child: selectedCategory == category
